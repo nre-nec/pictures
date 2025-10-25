@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج توزيع عربات الاختبار المحوسب - كلية التمريض الشمالية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Design System Variables */
+        :root {
+            --ncn-primary: #1B365D;
+            --ncn-secondary: #ffffff;
+            --ncn-accent: #f8f9fa;
+            --ncn-light-blue: #e3f2fd;
+            --ncn-border: #dee2e6;
+            --ncn-text: #212529;
+            --ncn-text-muted: #6c757d;
+            --ncn-success: #28a745;
+            --ncn-danger: #dc3545;
+            
+            --font-family: 'Tajawal', 'Segoe UI', Arial, sans-serif;
+            --border-radius: 8px;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--ncn-text);
+            background: linear-gradient(135deg, var(--ncn-accent) 0%, #ffffff 100%);
+            min-height: 100vh;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: var(--ncn-secondary);
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            border-top: 4px solid var(--ncn-primary);
+        }
+
+
+
+        .college-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--ncn-primary);
+            margin-bottom: 5px;
+        }
+
+
+
+        .form-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--ncn-primary);
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--ncn-light-blue);
+            border-radius: var(--border-radius);
+        }
+
+        .form-container {
+            background: var(--ncn-secondary);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--ncn-primary);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--ncn-border);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: var(--font-family);
+            transition: var(--transition);
+            background: #ffffff;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--ncn-primary);
+            box-shadow: 0 0 0 3px rgba(27, 54, 93, 0.1);
+        }
+
+        .form-control:disabled {
+            background: #f8f9fa;
+            color: var(--ncn-text-muted);
+            cursor: not-allowed;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '▼';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: var(--ncn-primary);
+            font-size: 0.8rem;
+        }
+
+        select.form-control {
+            appearance: none;
+            background: #ffffff;
+            cursor: pointer;
+            padding-left: 40px;
+        }
+
+        select.form-control:disabled {
+            cursor: not-allowed;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .section-info {
+            background: var(--ncn-light-blue);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 10px;
+            border-right: 4px solid var(--ncn-primary);
+        }
+
+        .section-info h4 {
+            color: var(--ncn-primary);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--ncn-primary);
+        }
+
+        .info-value {
+            color: var(--ncn-text);
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: var(--font-family);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--ncn-primary);
+            color: var(--ncn-secondary);
+        }
+
+        .btn-primary:hover {
+            background: #0f2847;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-success {
+            background: var(--ncn-success);
+            color: var(--ncn-secondary);
+        }
+
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .whatsapp-section {
+            background: var(--ncn-light-blue);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .responsibility-notice {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-right: 4px solid #856404;
+        }
+
+        .responsibility-notice h4 {
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .responsibility-notice p {
+            color: #856404;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                min-width: auto;
+            }
+
+            .college-name {
+                font-size: 1.5rem;
+            }
+
+            .form-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+            body {
+                background: white;
+                color: black;
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+
+            .container {
+                max-width: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .buttons-container,
+            .whatsapp-section,
+            .alert {
+                display: none !important;
+            }
+
+            .header {
+                background: white;
+                box-shadow: none;
+                border: 2px solid var(--ncn-primary);
+                margin-bottom: 15pt;
+                page-break-after: avoid;
+                padding: 15pt;
+            }
+
+            .header img {
+                max-height: 60pt !important;
+                margin-bottom: 8pt !important;
+            }
+
+            .form-container {
+                background: white;
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+                padding: 15pt;
+                margin: 0;
+            }
+
+            .form-control {
+                border: 1px solid #333;
+                background: white;
+                padding: 6pt;
+                min-height: 20pt;
+                font-size: 10pt;
+            }
+
+            .form-label {
+                color: black;
+                font-weight: bold;
+                font-size: 10pt;
+                margin-bottom: 4pt;
+            }
+
+            .section-info {
+                background: #f5f5f5;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+                padding: 10pt;
+                margin: 10pt 0;
+            }
+
+            .form-group {
+                margin-bottom: 10pt;
+            }
+
+            .form-grid {
+                gap: 10pt;
+            }
+
+            .college-name {
+                font-size: 14pt;
+            }
+
+            .form-title {
+                font-size: 12pt;
+                padding: 8pt;
+            }
+
+            .logo {
+                animation: none;
+            }
+
+            .print-only {
+                display: block !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCI" alt="شعار كلية التمريض الشمالية" style="max-height: 100px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; width: auto;">
+
+            <h1 class="college-name">كلية التمريض الشمالية</h1>
+
+            <div class="form-title">نموذج توزيع عربات الاختبار المحوسب</div>
+        </div>
+
+        <!-- Alert Messages -->
+        <div id="alertContainer"></div>
+
+        <!-- Form -->
+        <div class="form-container">
+            <form id="examForm">
+                <div class="form-grid">
+                    <!-- Date and Time Selection -->
+                    <div class="form-group">
+                        <label class="form-label" for="day">اليوم</label>
+                        <div class="select-wrapper">
+                            <select class="form-control" id="day" required>
+                                <option value="">اختر اليوم</option>
+                                <option value="الأحد">الأحد</option>
+                                <option value="الإثنين">الإثنين</option>
+                                <option value="الثلاثاء">الثلاثاء</option>
+                                <option value="الأربعاء">الأربعاء</option>
+                                <option value="الخميس">الخميس</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="date">التاريخ</label>
+                        <div class="select-wrapper">
+                            <select class="form-control" id="date" required disabled>
+                                <option value="">اختر التاريخ</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="period">الفترة</label>
+                        <div class="select-wrapper">
+                            <select class="form-control" id="period" required disabled>
+                                <option value="">اختر الفترة</option>
+                                <option value="الأولى">الأولى</option>
+                                <option value="الثانية">الثانية</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Course Selection -->
+                    <div class="form-group">
+                        <label class="form-label" for="course">المقرر</label>
+                        <div class="select-wrapper">
+                            <select class="form-control" id="course" required disabled>
+                                <option value="">اختر المقرر</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="section">الشعبة</label>
+                        <div class="select-wrapper">
+                            <select class="form-control" id="section" required disabled>
+                                <option value="">اختر الشعبة</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Hall and Devices -->
+                    <div class="form-group">
+                        <label class="form-label" for="hallNumber">رقم القاعة</label>
+                        <input type="text" class="form-control" id="hallNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="deviceCount">عدد الأجهزة</label>
+                        <input type="number" class="form-control" id="deviceCount" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">كلمة المرور</label>
+                        <input type="password" class="form-control" id="password" required>
+                    </div>
+
+                    <!-- Text Areas -->
+                    <div class="form-group full-width">
+                        <label class="form-label" for="supervisorNotes">ملاحظات المراقب</label>
+                        <textarea class="form-control" id="supervisorNotes" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label" for="generalInstructions">تعليمات عامة</label>
+                        <textarea class="form-control" id="generalInstructions" rows="4" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Section Information -->
+                <div id="sectionInfo" class="section-info" style="display: none;">
+                    <h4>معلومات الشعبة</h4>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">رمز المقرر:</span>
+                            <span class="info-value" id="infoCourseCode">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">الجنس:</span>
+                            <span class="info-value" id="infoGender">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">عدد المسجلين:</span>
+                            <span class="info-value" id="infoCount">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">التوزيع المقترح:</span>
+                            <span class="info-value" id="infoDistribution">-</span>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- WhatsApp Section -->
+        <div class="whatsapp-section no-print">
+            <h3 style="color: var(--ncn-primary); margin-bottom: 15px; font-size: 1.2rem;">إرسال عبر الواتساب</h3>
+            <div class="form-group">
+                <label class="form-label" for="phoneNumber">رقم الهاتف (966xxxxxxxxx)</label>
+                <input type="tel" class="form-control" id="phoneNumber" placeholder="966501234567" pattern="966[0-9]{9}">
+                <small style="color: var(--ncn-text-muted); margin-top: 5px; display: block;">أدخل الرقم بصيغة 966 متبوعاً بالرقم بدون صفر</small>
+            </div>
+        </div>
+
+        <!-- User Responsibility Notice -->
+        <div class="responsibility-notice no-print">
+            <h4>تنبيه مهم</h4>
+            <p>يرجى مراجعة جميع البيانات بعناية قبل الطباعة أو الإرسال. المستخدم يتحمل المسؤولية الكاملة عن صحة البيانات المدخلة ودقة المعلومات.</p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons-container no-print">
+            <button type="button" class="btn btn-primary" id="printBtn">
+                <span>طباعة / PDF</span>
+            </button>
+            <button type="button" class="btn btn-success" id="whatsappBtn">
+                <span>إرسال عبر واتساب</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Exam schedule data
+        const examSchedule = {
+            "الأحد|26/10/2025|الأولى": [
+                {code: "NURS441", name: "ادارة التمريض نظري", section: 7102, gender: "اناث", count: 52, distribution: "A7=26, A8=26", evening: ""},
+                {code: "NURS441", name: "ادارة التمريض نظري", section: 7106, gender: "اناث", count: 40, distribution: "B1=20, B2=20", evening: ""},
+                {code: "NURS441", name: "ادارة التمريض نظري", section: 7122, gender: "ذكور", count: 26, distribution: "G1=26", evening: ""},
+                {code: "NURS441", name: "ادارة التمريض نظري", section: 7126, gender: "ذكور", count: 59, distribution: "G2=30, G3=29", evening: ""},
+                {code: "NURS441", name: "ادارة التمريض نظري", section: 7110, gender: "اناث", count: 26, distribution: "C6=26", evening: ""},
+                {code: "NURS441", name: "ادارة التمريض نظري", section: 7113, gender: "اناث", count: 48, distribution: "C7=24, C8=24", evening: ""},
+                {code: "NURS441", name: "ادارة التمريض نظري", section: 7117, gender: "اناث", count: 55, distribution: "D7=28, D8=27", evening: "مسائي"},
+                {code: "NURS441", name: "ادارة التمريض نظري", section: 7130, gender: "ذكور", count: 35, distribution: "C8=35", evening: "مسائي"}
+            ],
+            "الأحد|26/10/2025|الثانية": [
+                {code: "IC101", name: "مدخل الى الثقافة الاسلامية", section: 4104, gender: "اناث", count: 68, distribution: "A7=34, A8=34", evening: ""},
+                {code: "IC101", name: "مدخل الى الثقافة الاسلامية", section: 4111, gender: "ذكور", count: 39, distribution: "G1=20, G2=19", evening: ""}
+            ],
+            "الإثنين|27/10/2025|الأولى": [
+                {code: "PENG003", name: "اللغة الانجليزية تحضيري 3", section: 2113, gender: "اناث", count: 37, distribution: "D7=19, D8=18", evening: "مسائي"},
+                {code: "PENG003", name: "اللغة الانجليزية تحضيري 3", section: 2121, gender: "اناث", count: 52, distribution: "D5=26, D6=26", evening: ""},
+                {code: "PENG003", name: "اللغة الانجليزية تحضيري 3", section: 2101, gender: "اناث", count: 61, distribution: "F5=31, F6=30", evening: ""},
+                {code: "PENG003", name: "اللغة الانجليزية تحضيري 3", section: 2106, gender: "ذكور", count: 61, distribution: "H4=31, H5=30", evening: ""}
+            ],
+            "الإثنين|27/10/2025|الثانية": [
+                {code: "IC102", name: "الاسلام وبناء المجتمع", section: 7111, gender: "اناث", count: 45, distribution: "A7=23, A8=22", evening: ""},
+                {code: "IC102", name: "الاسلام وبناء المجتمع", section: 7131, gender: "ذكور", count: 38, distribution: "G1=19, G2=19", evening: ""},
+                {code: "IC102", name: "الاسلام وبناء المجتمع", section: 7103, gender: "اناث", count: 52, distribution: "F10=26, F9=26", evening: ""},
+                {code: "IC102", name: "الاسلام وبناء المجتمع", section: 7119, gender: "اناث", count: 45, distribution: "F8=23, B6=22", evening: ""},
+                {code: "IC102", name: "الاسلام وبناء المجتمع", section: 7127, gender: "ذكور", count: 31, distribution: "G3=31", evening: ""},
+                {code: "IC102", name: "الاسلام وبناء المجتمع", section: 7107, gender: "اناث", count: 50, distribution: "B7=25, B8=25", evening: ""},
+                {code: "IC102", name: "الاسلام وبناء المجتمع", section: 7123, gender: "ذكور", count: 39, distribution: "G5=20, G6=19", evening: ""},
+                {code: "IC102", name: "الاسلام وبناء المجتمع", section: 7115, gender: "اناث", count: 45, distribution: "C2=23, C6=22", evening: ""}
+            ],
+            "الثلاثاء|28/10/2025|الأولى": [
+                {code: "ARAB102", name: "التحرير العربي", section: 6109, gender: "ذكور", count: 62, distribution: "G1=31, G2=31", evening: ""},
+                {code: "ARAB102", name: "التحرير العربي", section: 6103, gender: "اناث", count: 56, distribution: "D7=28, D8=28", evening: ""},
+                {code: "ARAB102", name: "التحرير العربي", section: 6106, gender: "اناث", count: 54, distribution: "D5=27, D6=27", evening: ""}
+            ],
+            "الثلاثاء|28/10/2025|الثانية": [
+                {code: "CHEM203", name: "الكيمياء الحيوية", section: 3104, gender: "اناث", count: 61, distribution: "A7=31, A8=30", evening: ""},
+                {code: "CHEM203", name: "الكيمياء الحيوية", section: 3109, gender: "اناث", count: 44, distribution: "D6=22, D7=22", evening: ""},
+                {code: "CHEM203", name: "الكيمياء الحيوية", section: 3114, gender: "ذكور", count: 31, distribution: "G1=31", evening: ""},
+                {code: "CHEM203", name: "الكيمياء الحيوية", section: 3117, gender: "اناث", count: 30, distribution: "D7=30", evening: "مسائي"},
+                {code: "CHEM203", name: "الكيمياء الحيوية", section: 3120, gender: "ذكور", count: 10, distribution: "C8=10", evening: "مسائي"}
+            ],
+            "الخميس|30/10/2025|الثانية": [
+                {code: "PHYL281", name: "علم وظائف الاعضاء", section: 3102, gender: "اناث", count: 46, distribution: "A7=23, A8=23", evening: ""},
+                {code: "PHYL281", name: "علم وظائف الاعضاء", section: 3107, gender: "اناث", count: 46, distribution: "D6=23, D7=23", evening: ""},
+                {code: "PHYL281", name: "علم وظائف الاعضاء", section: 3125, gender: "اناث", count: 26, distribution: "B7=26", evening: ""},
+                {code: "PHYL281", name: "علم وظائف الاعضاء", section: 3112, gender: "ذكور", count: 45, distribution: "G3=23, G4=22", evening: ""},
+                {code: "PHYL281", name: "علم وظائف الاعضاء", section: 3119, gender: "اناث", count: 53, distribution: "C6=27, C7=26", evening: ""},
+                {code: "PHYL281", name: "علم وظائف الاعضاء", section: 3121, gender: "ذكور", count: 18, distribution: "G7=18", evening: ""},
+                {code: "PHYL281", name: "علم وظائف الاعضاء", section: 3122, gender: "اناث", count: 16, distribution: "D6=16", evening: "مسائي"}
+            ],
+            "الأحد|02/11/2025|الأولى": [
+                {code: "ARAB101", name: "مهارات اللغة العربية", section: 3105, gender: "اناث", count: 54, distribution: "A7=27, A8=27", evening: ""},
+                {code: "ARAB101", name: "مهارات اللغة العربية", section: 3115, gender: "ذكور", count: 49, distribution: "G1=25, G2=24", evening: ""},
+                {code: "ARAB101", name: "مهارات اللغة العربية", section: 3110, gender: "اناث", count: 56, distribution: "B6=28, B7=28", evening: ""}
+            ],
+            "الأحد|02/11/2025|الثانية": [
+                {code: "PHRM304", name: "علم الادوية 2", section: 5103, gender: "اناث", count: 51, distribution: "C8=26, C9=25", evening: ""},
+                {code: "PHRM304", name: "علم الادوية 2", section: 5115, gender: "اناث", count: 29, distribution: "D6=29", evening: ""},
+                {code: "PHRM304", name: "علم الادوية 2", section: 5118, gender: "ذكور", count: 20, distribution: "G1=20", evening: ""},
+                {code: "PHRM304", name: "علم الادوية 2", section: 5126, gender: "اناث", count: 13, distribution: "B7=13", evening: "مسائي"},
+                {code: "PHRM304", name: "علم الادوية 2", section: 5109, gender: "اناث", count: 48, distribution: "D8=24, B6=24", evening: ""},
+                {code: "PHRM304", name: "علم الادوية 2", section: 5124, gender: "ذكور", count: 7, distribution: "G1=7", evening: ""},
+                {code: "PHRM304", name: "علم الادوية 2", section: 5106, gender: "اناث", count: 44, distribution: "B7=22, B8=22", evening: ""},
+                {code: "PHRM304", name: "علم الادوية 2", section: 5112, gender: "اناث", count: 45, distribution: "C7=23, C6=22", evening: ""},
+                {code: "PHRM304", name: "علم الادوية 2", section: 5121, gender: "ذكور", count: 35, distribution: "G3=35", evening: ""}
+            ],
+            "الإثنين|03/11/2025|الأولى": [
+                {code: "NURS331", name: "تمريض الامومة نظري", section: 6102, gender: "اناث", count: 27, distribution: "A7=27", evening: ""},
+                {code: "NURS331", name: "تمريض الامومة نظري", section: 6105, gender: "اناث", count: 18, distribution: "A8=18", evening: ""},
+                {code: "NURS331", name: "تمريض الامومة نظري", section: 6110, gender: "اناث", count: 35, distribution: "F9=35", evening: "مسائي"},
+                {code: "NURS331", name: "تمريض الامومة نظري", section: 6108, gender: "ذكور", count: 48, distribution: "C8=24, C9=24", evening: "مسائي"}
+            ],
+            "الإثنين|03/11/2025|الثانية": [
+                {code: "PHYS121", name: "فيزياء طبية", section: 2108, gender: "ذكور", count: 37, distribution: "G1=25, G2=12", evening: ""},
+                {code: "PHYS121", name: "فيزياء طبية", section: 2116, gender: "اناث", count: 15, distribution: "A7=15", evening: ""},
+                {code: "PHYS121", name: "فيزياء طبية", section: 2117, gender: "اناث", count: 9, distribution: "F10=9", evening: "مسائي"},
+                {code: "PHYS121", name: "فيزياء طبية", section: 2102, gender: "اناث", count: 48, distribution: "C7=24, C8=24", evening: ""},
+                {code: "PHYS121", name: "فيزياء طبية", section: 2119, gender: "ذكور", count: 10, distribution: "A7=10", evening: "مسائي"}
+            ],
+            "الثلاثاء|04/11/2025|الأولى": [
+                {code: "NURS421", name: "تمريض صحة المجتمع نظري", section: 8101, gender: "اناث", count: 52, distribution: "A7=26, A8=26", evening: ""},
+                {code: "NURS421", name: "تمريض صحة المجتمع نظري", section: 8105, gender: "اناث", count: 19, distribution: "C7=19", evening: ""},
+                {code: "NURS421", name: "تمريض صحة المجتمع نظري", section: 8109, gender: "ذكور", count: 12, distribution: "G3=12", evening: ""},
+                {code: "NURS421", name: "تمريض صحة المجتمع نظري", section: 8119, gender: "ذكور", count: 42, distribution: "C6=21, C7=21", evening: "مسائي"},
+                {code: "NURS421", name: "تمريض صحة المجتمع نظري", section: 8117, gender: "اناث", count: 23, distribution: "D5=23", evening: "مسائي"}
+            ],
+            "الأربعاء|05/11/2025|الأولى": [
+                {code: "NURS213", name: "اساسيات التمريض 2 نظري", section: 4101, gender: "اناث", count: 50, distribution: "C8=25, C9=25", evening: ""},
+                {code: "NURS213", name: "اساسيات التمريض 2 نظري", section: 4107, gender: "ذكور", count: 50, distribution: "G8=25, H1=25", evening: ""},
+                {code: "NURS213", name: "اساسيات التمريض 2 نظري", section: 4116, gender: "اناث", count: 44, distribution: "F7=22, F6=22", evening: ""},
+                {code: "NURS213", name: "اساسيات التمريض 2 نظري", section: 4118, gender: "ذكور", count: 24, distribution: "G3=24", evening: ""},
+                {code: "NURS213", name: "اساسيات التمريض 2 نظري", section: 4115, gender: "اناث", count: 50, distribution: "E8=25, E9=25", evening: ""}
+            ],
+            "الخميس|06/11/2025|الأولى": [
+                {code: "NURS313", name: "تمريض عناية بالغين متقدم نظري", section: 6101, gender: "اناث", count: 37, distribution: "A7=19, A8=18", evening: ""},
+                {code: "NURS313", name: "تمريض عناية بالغين متقدم نظري", section: 6104, gender: "اناث", count: 32, distribution: "C9=32", evening: ""},
+                {code: "NURS313", name: "تمريض عناية بالغين متقدم نظري", section: 6107, gender: "ذكور", count: 40, distribution: "G1=20, G2=20", evening: ""},
+                {code: "BIOL281", name: "علم الأحياء الدقيقه", section: 4102, gender: "اناث", count: 56, distribution: "D6=28, D7=28", evening: ""},
+                {code: "BIOL281", name: "علم الأحياء الدقيقه", section: 4108, gender: "ذكور", count: 25, distribution: "G3=25", evening: ""},
+                {code: "NURS313", name: "تمريض عناية بالغين متقدم نظري", section: 6112, gender: "اناث", count: 20, distribution: "D6=20", evening: "مسائي"},
+                {code: "NURS313", name: "تمريض عناية بالغين متقدم نظري", section: 6111, gender: "ذكور", count: 45, distribution: "C8=23, C9=22", evening: "مسائي"}
+            ]
+        };
+
+        // Get available dates for selected day
+        function getAvailableDates(selectedDay) {
+            const dates = new Set();
+            Object.keys(examSchedule).forEach(key => {
+                const [day, date, period] = key.split('|');
+                if (day === selectedDay) {
+                    dates.add(date);
+                }
+            });
+            return Array.from(dates).sort();
+        }
+
+        // Get available periods for selected day and date
+        function getAvailablePeriods(selectedDay, selectedDate) {
+            const periods = new Set();
+            Object.keys(examSchedule).forEach(key => {
+                const [day, date, period] = key.split('|');
+                if (day === selectedDay && date === selectedDate) {
+                    periods.add(period);
+                }
+            });
+            return Array.from(periods);
+        }
+
+        // Get available courses for selected combination
+        function getAvailableCourses(selectedDay, selectedDate, selectedPeriod) {
+            const key = `${selectedDay}|${selectedDate}|${selectedPeriod}`;
+            const courses = examSchedule[key] || [];
+            
+            const uniqueCourses = new Map();
+            courses.forEach(course => {
+                const courseKey = `${course.code}|${course.name}`;
+                if (!uniqueCourses.has(courseKey)) {
+                    uniqueCourses.set(courseKey, course);
+                }
+            });
+            
+            return Array.from(uniqueCourses.values());
+        }
+
+        // Get available sections for selected course
+        function getAvailableSections(selectedDay, selectedDate, selectedPeriod, selectedCourseCode) {
+            const key = `${selectedDay}|${selectedDate}|${selectedPeriod}`;
+            const courses = examSchedule[key] || [];
+            
+            return courses.filter(course => course.code === selectedCourseCode);
+        }
+
+        // DOM elements
+        const daySelect = document.getElementById('day');
+        const dateSelect = document.getElementById('date');
+        const periodSelect = document.getElementById('period');
+        const courseSelect = document.getElementById('course');
+        const sectionSelect = document.getElementById('section');
+        const sectionInfo = document.getElementById('sectionInfo');
+        const printBtn = document.getElementById('printBtn');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const alertContainer = document.getElementById('alertContainer');
+
+        // Helper function to show alerts
+        function showAlert(message, type = 'info') {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.textContent = message;
+            
+            alertContainer.innerHTML = '';
+            alertContainer.appendChild(alertDiv);
+            
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 5000);
+        }
+
+        // Event listeners
+        daySelect.addEventListener('change', function() {
+            const selectedDay = this.value;
+            
+            // Reset subsequent dropdowns
+            dateSelect.innerHTML = '<option value="">اختر التاريخ</option>';
+            periodSelect.innerHTML = '<option value="">اختر الفترة</option>';
+            courseSelect.innerHTML = '<option value="">اختر المقرر</option>';
+            sectionSelect.innerHTML = '<option value="">اختر الشعبة</option>';
+            sectionInfo.style.display = 'none';
+            
+            if (selectedDay) {
+                // Enable and populate dates
+                const dates = getAvailableDates(selectedDay);
+                dates.forEach(date => {
+                    const option = document.createElement('option');
+                    option.value = date;
+                    option.textContent = date;
+                    dateSelect.appendChild(option);
+                });
+                dateSelect.disabled = false;
+            } else {
+                dateSelect.disabled = true;
+                periodSelect.disabled = true;
+                courseSelect.disabled = true;
+                sectionSelect.disabled = true;
+            }
+        });
+
+        dateSelect.addEventListener('change', function() {
+            const selectedDay = daySelect.value;
+            const selectedDate = this.value;
+            
+            // Reset subsequent dropdowns
+            periodSelect.innerHTML = '<option value="">اختر الفترة</option>';
+            courseSelect.innerHTML = '<option value="">اختر المقرر</option>';
+            sectionSelect.innerHTML = '<option value="">اختر الشعبة</option>';
+            sectionInfo.style.display = 'none';
+            
+            if (selectedDate) {
+                // Enable and populate periods
+                const periods = getAvailablePeriods(selectedDay, selectedDate);
+                periods.forEach(period => {
+                    const option = document.createElement('option');
+                    option.value = period;
+                    option.textContent = period;
+                    periodSelect.appendChild(option);
+                });
+                periodSelect.disabled = false;
+            } else {
+                periodSelect.disabled = true;
+                courseSelect.disabled = true;
+                sectionSelect.disabled = true;
+            }
+        });
+
+        periodSelect.addEventListener('change', function() {
+            const selectedDay = daySelect.value;
+            const selectedDate = dateSelect.value;
+            const selectedPeriod = this.value;
+            
+            // Reset subsequent dropdowns
+            courseSelect.innerHTML = '<option value="">اختر المقرر</option>';
+            sectionSelect.innerHTML = '<option value="">اختر الشعبة</option>';
+            sectionInfo.style.display = 'none';
+            
+            if (selectedPeriod) {
+                // Enable and populate courses
+                const courses = getAvailableCourses(selectedDay, selectedDate, selectedPeriod);
+                courses.forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course.code;
+                    option.textContent = `${course.code} - ${course.name}`;
+                    courseSelect.appendChild(option);
+                });
+                courseSelect.disabled = false;
+            } else {
+                courseSelect.disabled = true;
+                sectionSelect.disabled = true;
+            }
+        });
+
+        courseSelect.addEventListener('change', function() {
+            const selectedDay = daySelect.value;
+            const selectedDate = dateSelect.value;
+            const selectedPeriod = periodSelect.value;
+            const selectedCourseCode = this.value;
+            
+            // Reset subsequent dropdowns
+            sectionSelect.innerHTML = '<option value="">اختر الشعبة</option>';
+            sectionInfo.style.display = 'none';
+            
+            if (selectedCourseCode) {
+                // Enable and populate sections
+                const sections = getAvailableSections(selectedDay, selectedDate, selectedPeriod, selectedCourseCode);
+                sections.forEach(section => {
+                    const option = document.createElement('option');
+                    option.value = section.section;
+                    option.textContent = `الشعبة ${section.section} - ${section.gender} (${section.count} طالب${section.count > 10 ? 'اً' : ''})`;
+                    option.dataset.sectionData = JSON.stringify(section);
+                    sectionSelect.appendChild(option);
+                });
+                sectionSelect.disabled = false;
+            } else {
+                sectionSelect.disabled = true;
+            }
+        });
+
+        sectionSelect.addEventListener('change', function() {
+            if (this.value) {
+                const selectedOption = this.options[this.selectedIndex];
+                const sectionData = JSON.parse(selectedOption.dataset.sectionData);
+                
+                // Update section information
+                document.getElementById('infoCourseCode').textContent = sectionData.code;
+                document.getElementById('infoGender').textContent = sectionData.gender;
+                document.getElementById('infoCount').textContent = sectionData.count;
+                document.getElementById('infoDistribution').textContent = sectionData.distribution;
+
+                
+                sectionInfo.style.display = 'block';
+            } else {
+                sectionInfo.style.display = 'none';
+            }
+        });
+
+        // Print functionality
+        printBtn.addEventListener('click', function() {
+            // Validate required fields
+            const requiredFields = ['day', 'date', 'period', 'course', 'section', 'hallNumber', 'deviceCount', 'password', 'supervisorNotes', 'generalInstructions'];
+            const missingFields = [];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    missingFields.push(field.previousElementSibling.textContent);
+                }
+            });
+            
+            if (missingFields.length > 0) {
+                showAlert(`يرجى إكمال الحقول التالية: ${missingFields.join(', ')}`, 'error');
+                return;
+            }
+            
+            showAlert('جاري التحضير للطباعة...', 'success');
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        });
+
+        // WhatsApp functionality
+        whatsappBtn.addEventListener('click', function() {
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            
+            if (!phoneNumber) {
+                showAlert('يرجى إدخال رقم الهاتف', 'warning');
+                return;
+            }
+            
+            if (!/^966[0-9]{9}$/.test(phoneNumber)) {
+                showAlert('يرجى إدخال رقم هاتف صحيح بصيغة 966xxxxxxxxx', 'error');
+                return;
+            }
+            
+            // Validate required fields
+            const requiredFields = ['day', 'date', 'period', 'course', 'section', 'hallNumber', 'deviceCount', 'supervisorNotes', 'generalInstructions'];
+            const missingFields = [];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    missingFields.push(field.previousElementSibling.textContent);
+                }
+            });
+            
+            if (missingFields.length > 0) {
+                showAlert(`يرجى إكمال الحقول التالية: ${missingFields.join(', ')}`, 'error');
+                return;
+            }
+            
+            // Create WhatsApp message
+            const message = createWhatsAppMessage();
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            showAlert('جاري فتح واتساب...', 'success');
+            
+            // Open WhatsApp in new window
+            try {
+                const newWindow = window.open(whatsappUrl, '_blank');
+                if (!newWindow) {
+                    // Fallback if popup blocked
+                    window.location.href = whatsappUrl;
+                }
+            } catch (error) {
+                // Direct navigation as fallback
+                window.location.href = whatsappUrl;
+            }
+        });
+
+        function createWhatsAppMessage() {
+            const day = document.getElementById('day').value;
+            const date = document.getElementById('date').value;
+            const period = document.getElementById('period').value;
+            const courseText = document.getElementById('course').options[document.getElementById('course').selectedIndex].text;
+            const sectionText = document.getElementById('section').options[document.getElementById('section').selectedIndex].text;
+            const hallNumber = document.getElementById('hallNumber').value;
+            const deviceCount = document.getElementById('deviceCount').value;
+            const supervisorNotes = document.getElementById('supervisorNotes').value;
+            const generalInstructions = document.getElementById('generalInstructions').value;
+            
+            let message = `📋 *نموذج توزيع عربات الاختبار المحوسب*\n`;
+            message += `🏛️ *كلية التمريض الشمالية*\n\n`;
+            message += `📅 *تفاصيل الاختبار:*\n`;
+            message += `• اليوم: ${day}\n`;
+            message += `• التاريخ: ${date}\n`;
+            message += `• الفترة: ${period}\n`;
+            message += `• المقرر: ${courseText}\n`;
+            message += `• الشعبة: ${sectionText}\n\n`;
+            message += `🏛️ *تفاصيل القاعة:*\n`;
+            message += `• رقم القاعة: ${hallNumber}\n`;
+            message += `• عدد الأجهزة: ${deviceCount}\n\n`;
+            
+            if (supervisorNotes) {
+                message += `📝 *ملاحظات المراقب:*\n${supervisorNotes}\n\n`;
+            }
+            
+            if (generalInstructions) {
+                message += `📋 *التعليمات العامة:*\n${generalInstructions}\n\n`;
+            }
+            
+            message += `⏰ تم إنشاء هذا النموذج في: ${new Date().toLocaleString('ar-SA')}\n`;
+            message += `📱 تم إنشاؤه بواسطة نظام كلية التمريض الشمالية`;
+            
+            return message;
+        }
+
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function() {
+            showAlert('أهلاً وسهلاً بك في نظام توزيع عربات الاختبار المحوسب', 'success');
+        });
+    </script>
+</body>
+</html>
