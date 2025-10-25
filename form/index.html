@@ -367,7 +367,7 @@
                 padding: 15pt;
             }
 
-            .header img {
+            .header-image {
                 max-height: 60pt !important;
                 margin-bottom: 8pt !important;
             }
@@ -439,10 +439,7 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCI" alt="شعار كلية التمريض الشمالية" style="max-height: 100px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; width: auto;">
-
-            <h1 class="college-name">كلية التمريض الشمالية</h1>
-
+            <img src="https://nre-nec.github.io/pictures/header.png" alt="صورة الهيدر" class="header-image" style="max-width: 100%; height: auto; display: block; margin: 0 auto 20px auto;">
             <div class="form-title">نموذج توزيع عربات الاختبار المحوسب</div>
         </div>
 
@@ -565,9 +562,9 @@
         <div class="whatsapp-section no-print">
             <h3 style="color: var(--ncn-primary); margin-bottom: 15px; font-size: 1.2rem;">إرسال عبر الواتساب</h3>
             <div class="form-group">
-                <label class="form-label" for="phoneNumber">رقم الهاتف (966xxxxxxxxx)</label>
-                <input type="tel" class="form-control" id="phoneNumber" placeholder="966501234567" pattern="966[0-9]{9}">
-                <small style="color: var(--ncn-text-muted); margin-top: 5px; display: block;">أدخل الرقم بصيغة 966 متبوعاً بالرقم بدون صفر</small>
+                <label class="form-label" for="phoneNumber">رقم الجوال (مثال: 966501234567 أو 0501234567)</label>
+                <input type="tel" class="form-control" id="phoneNumber" placeholder="966501234567 أو 0501234567">
+                <small style="color: var(--ncn-text-muted); margin-top: 5px; display: block;">أدخل رقم الجوال السعودي - سيتم دمجه تلقائياً مع رابط الواتساب</small>
             </div>
         </div>
 
@@ -580,10 +577,10 @@
         <!-- Buttons -->
         <div class="buttons-container no-print">
             <button type="button" class="btn btn-primary" id="printBtn">
-                <span>طباعة / PDF</span>
+                <span>🖨️ طباعة</span>
             </button>
             <button type="button" class="btn btn-success" id="whatsappBtn">
-                <span>إرسال عبر واتساب</span>
+                <span>💬 إرسال عبر واتساب</span>
             </button>
         </div>
     </div>
@@ -913,10 +910,8 @@
                 return;
             }
             
-            showAlert('جاري التحضير للطباعة...', 'success');
-            setTimeout(() => {
-                window.print();
-            }, 500);
+            // Print directly
+            window.print();
         });
 
         // WhatsApp functionality
@@ -924,13 +919,27 @@
             const phoneNumber = document.getElementById('phoneNumber').value.trim();
             
             if (!phoneNumber) {
-                showAlert('يرجى إدخال رقم الهاتف', 'warning');
+                showAlert('يرجى إدخال رقم الجوال أولاً', 'warning');
                 return;
             }
             
-            if (!/^966[0-9]{9}$/.test(phoneNumber)) {
-                showAlert('يرجى إدخال رقم هاتف صحيح بصيغة 966xxxxxxxxx', 'error');
+            // Clean phone number (remove spaces, dashes, etc.)
+            const cleanedPhone = phoneNumber.replace(/\D/g, '');
+            
+            // Validate phone number format
+            if (!/^966[0-9]{9}$/.test(cleanedPhone) && !/^[0-9]{9,10}$/.test(cleanedPhone)) {
+                showAlert('يرجى إدخال رقم جوال صحيح (مثال: 966501234567 أو 501234567)', 'error');
                 return;
+            }
+            
+            // Format phone number - ensure it starts with 966
+            let formattedPhone = cleanedPhone;
+            if (!formattedPhone.startsWith('966')) {
+                // If starts with 0, remove it
+                if (formattedPhone.startsWith('0')) {
+                    formattedPhone = formattedPhone.substring(1);
+                }
+                formattedPhone = '966' + formattedPhone;
             }
             
             // Validate required fields
@@ -951,21 +960,12 @@
             
             // Create WhatsApp message
             const message = createWhatsAppMessage();
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             
-            showAlert('جاري فتح واتساب...', 'success');
+            // Build WhatsApp URL
+            const whatsappUrl = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(message)}`;
             
-            // Open WhatsApp in new window
-            try {
-                const newWindow = window.open(whatsappUrl, '_blank');
-                if (!newWindow) {
-                    // Fallback if popup blocked
-                    window.location.href = whatsappUrl;
-                }
-            } catch (error) {
-                // Direct navigation as fallback
-                window.location.href = whatsappUrl;
-            }
+            // Open WhatsApp in new tab
+            window.open(whatsappUrl, '_blank');
         });
 
         function createWhatsAppMessage() {
