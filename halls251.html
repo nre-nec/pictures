@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحليل القاعات الدراسية - كلية الشمال</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Tajawal', sans-serif; }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; }
+            .shadow-sm, .shadow-md { box-shadow: none !important; }
+            .border-r-4 { border-right-width: 2px !important; }
+        }
+        /* تحسين مظهر السكرول بار */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+
+        /* Animations Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-enter {
+            opacity: 0; /* يبدأ مخفياً */
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40 print:shadow-none print:border-b animate-enter">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <img src="https://nre-nec.github.io/pictures/logo.png" alt="شعار الكلية" class="h-16 w-auto object-contain hover:scale-105 transition-transform duration-300">
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold text-blue-900">كلية الشمال للتمريض</h1>
+                    <p class="text-sm text-gray-500">لوحة بيانات القاعات الدراسية</p>
+                </div>
+            </div>
+            <button onclick="window.print()" class="no-print bg-blue-50 text-blue-700 hover:bg-blue-100 px-4 py-2 rounded-lg transition-colors flex items-center gap-2 font-bold text-sm transform hover:scale-105 active:scale-95 duration-200">
+                <i class="fas fa-print"></i> طباعة التقرير
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Total Halls -->
+            <div class="animate-enter delay-100 bg-white p-6 rounded-xl shadow-sm border-r-4 border-indigo-600 flex items-center justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">إجمالي القاعات</p>
+                    <h3 class="text-4xl font-bold text-indigo-900 mt-2 counter" data-target="45">0</h3>
+                    <p class="text-xs text-indigo-400 mt-1 font-bold">نسبة التشغيل 100%</p>
+                </div>
+                <div class="h-14 w-14 bg-indigo-50 rounded-full flex items-center justify-center text-indigo-600 text-2xl animate-pulse">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+            </div>
+
+            <!-- Female Halls -->
+            <div class="animate-enter delay-200 bg-white p-6 rounded-xl shadow-sm border-r-4 border-rose-500 flex items-center justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">قاعات الإناث</p>
+                    <h3 class="text-4xl font-bold text-rose-700 mt-2 counter" data-target="29">0</h3>
+                    <p class="text-xs text-rose-400 mt-1 font-bold">نسبة الاستحواذ 64.4%</p>
+                </div>
+                <div class="h-14 w-14 bg-rose-50 rounded-full flex items-center justify-center text-rose-600 text-2xl">
+                    <i class="fas fa-female"></i>
+                </div>
+            </div>
+
+            <!-- Male Halls -->
+            <div class="animate-enter delay-300 bg-white p-6 rounded-xl shadow-sm border-r-4 border-sky-600 flex items-center justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">قاعات الذكور</p>
+                    <h3 class="text-4xl font-bold text-sky-700 mt-2 counter" data-target="16">0</h3>
+                    <p class="text-xs text-sky-400 mt-1 font-bold">نسبة الاستحواذ 35.6%</p>
+                </div>
+                <div class="h-14 w-14 bg-sky-50 rounded-full flex items-center justify-center text-sky-600 text-2xl">
+                    <i class="fas fa-male"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar Visual -->
+        <div class="animate-enter delay-400 bg-white p-5 rounded-xl shadow-sm mb-8 print:border print:border-gray-200 hover:shadow-md transition-shadow duration-300">
+            <div class="flex justify-between items-end mb-2">
+                <h4 class="text-sm font-bold text-gray-700">توزيع الكثافة المكانية</h4>
+                <span class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded flex items-center gap-1">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
+                    محدث الآن
+                </span>
+            </div>
+            
+            <div class="w-full h-8 bg-gray-100 rounded-full overflow-hidden flex shadow-inner relative">
+                <!-- شريط الإناث -->
+                <!-- تم تعديل style="width: 64.4%" مباشرة وإزالة opacity-0 من النص لضمان الظهور -->
+                <div class="progress-bar h-full bg-rose-500 flex items-center justify-center text-[11px] text-white font-bold transition-all duration-[1500ms] ease-out border-l border-white/10 cursor-help hover:bg-rose-600" 
+                     style="width: 64.4%" 
+                     data-width="64.4%"
+                     title="الإناث: 29 قاعة (64.4%)">
+                    <span class="transition-opacity duration-500 delay-1000 whitespace-nowrap">64.4%</span>
+                </div>
+                <!-- شريط الذكور -->
+                 <!-- تم تعديل style="width: 35.6%" مباشرة وإزالة opacity-0 من النص لضمان الظهور -->
+                <div class="progress-bar h-full bg-sky-500 flex items-center justify-center text-[11px] text-white font-bold transition-all duration-[1500ms] ease-out cursor-help hover:bg-sky-600" 
+                     style="width: 35.6%" 
+                     data-width="35.6%"
+                     title="الذكور: 16 قاعة (35.6%)">
+                     <span class="transition-opacity duration-500 delay-1000 whitespace-nowrap">35.6%</span>
+                </div>
+            </div>
+            
+            <div class="flex justify-start gap-6 text-xs text-gray-600 mt-3 font-medium">
+                <span class="flex items-center gap-2 cursor-pointer hover:text-rose-600 transition-colors"><span class="w-3 h-3 rounded-full bg-rose-500 shadow-sm"></span> شطر الطالبات (29 قاعة)</span>
+                <span class="flex items-center gap-2 cursor-pointer hover:text-sky-600 transition-colors"><span class="w-3 h-3 rounded-full bg-sky-500 shadow-sm"></span> شطر الطلاب (16 قاعة)</span>
+            </div>
+        </div>
+
+        <!-- Detailed Lists -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Females Section -->
+            <div class="animate-enter delay-500 bg-white rounded-xl shadow-sm border border-rose-100 overflow-hidden flex flex-col h-full hover:shadow-lg transition-shadow duration-300">
+                <div class="bg-rose-50/50 px-6 py-4 border-b border-rose-100 flex justify-between items-center">
+                    <h3 class="font-bold text-rose-800 flex items-center gap-2 text-lg">
+                        <span class="bg-rose-100 p-1.5 rounded-lg transform hover:rotate-12 transition-transform duration-300"><i class="fas fa-building text-rose-600"></i></span>
+                        تفاصيل قاعات الإناث
+                    </h3>
+                </div>
+                <div class="p-6 space-y-6 flex-grow">
+                    
+                    <!-- Group A -->
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-400 mb-2 border-b border-gray-100 pb-1">قاعات A</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="hall-badge rose">A4</span>
+                            <span class="hall-badge rose">A6</span>
+                            <span class="hall-badge rose">A7</span>
+                            <span class="hall-badge rose">A8</span>
+                        </div>
+                    </div>
+
+                    <!-- Group B -->
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-400 mb-2 border-b border-gray-100 pb-1">قاعات B</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="hall-badge rose">B3</span>
+                            <span class="hall-badge rose">B4</span>
+                            <span class="hall-badge rose">B6</span>
+                            <span class="hall-badge rose">B7</span>
+                            <span class="hall-badge rose">B8</span>
+                        </div>
+                    </div>
+
+                    <!-- Group C -->
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-400 mb-2 border-b border-gray-100 pb-1">قاعات C</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="hall-badge rose">C6</span>
+                            <span class="hall-badge rose">C7</span>
+                            <span class="hall-badge rose">C8</span>
+                            <span class="hall-badge rose">C9</span>
+                            <span class="hall-badge rose">C10</span>
+                        </div>
+                    </div>
+
+                    <!-- Group D -->
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-400 mb-2 border-b border-gray-100 pb-1">قاعات D</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="hall-badge rose">D4</span>
+                            <span class="hall-badge rose">D5</span>
+                            <span class="hall-badge rose">D6</span>
+                            <span class="hall-badge rose">D7</span>
+                            <span class="hall-badge rose">D8</span>
+                        </div>
+                    </div>
+
+                    <!-- Group E -->
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-400 mb-2 border-b border-gray-100 pb-1">قاعات E</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="hall-badge rose">E6</span>
+                            <span class="hall-badge rose">E8</span>
+                            <span class="hall-badge rose">E9</span>
+                            <span class="hall-badge rose">E10</span>
+                        </div>
+                    </div>
+
+                    <!-- Group F -->
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-400 mb-2 border-b border-gray-100 pb-1">قاعات F</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="hall-badge rose">F2</span>
+                            <span class="hall-badge rose">F5</span>
+                            <span class="hall-badge rose">F6</span>
+                            <span class="hall-badge rose">F8</span>
+                            <span class="hall-badge rose">F9</span>
+                            <span class="hall-badge rose">F10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Males Section -->
+            <div class="animate-enter delay-500 bg-white rounded-xl shadow-sm border border-sky-100 overflow-hidden flex flex-col h-full hover:shadow-lg transition-shadow duration-300">
+                <div class="bg-sky-50/50 px-6 py-4 border-b border-sky-100 flex justify-between items-center">
+                    <h3 class="font-bold text-sky-800 flex items-center gap-2 text-lg">
+                        <span class="bg-sky-100 p-1.5 rounded-lg transform hover:rotate-12 transition-transform duration-300"><i class="fas fa-building text-sky-600"></i></span>
+                        تفاصيل قاعات الطلاب
+                    </h3>
+                </div>
+                <div class="p-6 space-y-6 flex-grow">
+                    <!-- Group G -->
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-400 mb-2 border-b border-gray-100 pb-1">قاعات G</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="hall-badge sky">G1</span>
+                            <span class="hall-badge sky">G2</span>
+                            <span class="hall-badge sky">G3</span>
+                            <span class="hall-badge sky">G4</span>
+                            <span class="hall-badge sky">G5</span>
+                            <span class="hall-badge sky">G6</span>
+                            <span class="hall-badge sky">G7</span>
+                            <span class="hall-badge sky">G8</span>
+                        </div>
+                    </div>
+
+                    <!-- Group H -->
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-400 mb-2 border-b border-gray-100 pb-1">قاعات H</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="hall-badge sky">H1</span>
+                            <span class="hall-badge sky">H2</span>
+                            <span class="hall-badge sky">H3</span>
+                            <span class="hall-badge sky">H4</span>
+                            <span class="hall-badge sky">H5</span>
+                            <span class="hall-badge sky">H6</span>
+                            <span class="hall-badge sky">H7</span>
+                            <span class="hall-badge sky">H8</span>
+                        </div>
+                    </div>
+
+                     <!-- Empty State / Placeholder for future buildings -->
+                     <div class="mt-8 p-4 bg-gray-50 rounded-lg border border-dashed border-gray-300 text-center hover:bg-gray-100 transition-colors">
+                        <p class="text-gray-400 text-sm">لا توجد قاعات إضافية مسجلة حالياً</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-slate-800 text-white py-8 mt-8 print:bg-white print:text-black print:border-t animate-enter delay-500">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center mb-4 opacity-50 no-print hover:opacity-100 transition-opacity duration-300">
+                <i class="fas fa-university text-3xl animate-bounce" style="animation-duration: 3s;"></i>
+            </div>
+            <p class="text-sm opacity-80">&copy; 2025 كلية الشمال للتمريض - جميع الحقوق محفوظة.</p>
+            <p class="text-xs opacity-50 mt-2">تقرير صادر عن وحدة الاختبارات</p>
+        </div>
+    </footer>
+
+    <script>
+        // Apply classes to badges efficiently
+        document.querySelectorAll('.hall-badge').forEach(badge => {
+            const baseClasses = "px-4 py-2 rounded-lg text-sm font-bold border transition-all duration-300 hover:scale-110 cursor-default shadow-sm hover:shadow-md";
+            
+            if (badge.classList.contains('rose')) {
+                badge.className += ` ${baseClasses} bg-white text-rose-600 border-rose-100 hover:bg-rose-50 hover:border-rose-300`;
+            } else if (badge.classList.contains('sky')) {
+                badge.className += ` ${baseClasses} bg-white text-sky-600 border-sky-100 hover:bg-sky-50 hover:border-sky-300`;
+            }
+        });
+
+        // Main Animation Logic
+        const runAnimations = () => {
+            // تم إزالة الجزء الخاص بتحريك شريط التقدم لأنه أصبح ثابتاً في الـ HTML
+
+            // 2. Animate Counters (Numbers)
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; // ms
+                const increment = target / (duration / 16); // 60fps
+                
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        };
+
+        // Ensure script runs whether DOM is loading or already loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', runAnimations);
+        } else {
+            runAnimations();
+        }
+    </script>
+</body>
+</html>
