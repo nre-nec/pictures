@@ -163,6 +163,25 @@
             background: var(--primary-color);
             color: white;
             box-shadow: 0 0 20px rgba(77, 119, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Button Sheen Effect */
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: skewX(-25deg);
+            transition: left 0.75s;
+        }
+
+        .btn-primary:hover::after {
+            left: 200%;
         }
 
         .btn-primary:hover {
@@ -195,8 +214,8 @@
 
         .brand-logo {
             height: 3rem;
-            filter: brightness(0) invert(1);
-            /* Make logo white */
+            height: 3rem;
+            /* filter removed for new white logo */
         }
 
         .brand-text h1 {
@@ -251,10 +270,26 @@
         .hero-title {
             font-size: 3.5rem;
             font-weight: 900;
-            color: white;
+            color: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(to right, #4d4d4d 0%, #fff 50%, #4d4d4d 100%);
+            background-size: 500px;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s infinite linear;
             margin-bottom: 1.5rem;
             line-height: 1.2;
-            text-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+            /* text-shadow removed as it conflicts with background-clip: text */
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -500px 0;
+            }
+
+            100% {
+                background-position: 500px 0;
+            }
         }
 
         .hero p {
@@ -281,6 +316,43 @@
             align-items: center;
             gap: 1.5rem;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Glowing Border Effect */
+        .alert-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 102%;
+            height: 102%;
+            background: conic-gradient(from 0deg, transparent 0%, var(--primary-color) 10%, transparent 20%);
+            animation: rotate 4s linear infinite;
+            z-index: -2;
+            border-radius: var(--radius-lg);
+        }
+
+        .alert-card::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--bg-surface);
+            border-radius: calc(var(--radius-lg) - 2px);
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
 
         .alert-card:hover {
@@ -579,6 +651,30 @@
                 max-width: 100%;
             }
         }
+
+        /* Sparkle Effect */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle-anim 1s linear forwards;
+            box-shadow: 0 0 5px white, 0 0 10px var(--primary-color);
+        }
+
+        @keyframes sparkle-anim {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -588,7 +684,7 @@
     <header>
         <div class="container flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <img src="https://nre-nec.github.io/pictures/logo.png" alt="شعار الكلية" class="brand-logo">
+                <img src="https://nre-nec.github.io/pictures/cce2.png" alt="شعار الكلية" class="brand-logo">
                 <div class="brand-text">
                     <h1>مركز الاستشارات بكلية الشمال</h1>
                     <p>بوابة الدورات المعتمدة</p>
@@ -604,7 +700,8 @@
             </style>
             <a href="https://nec.edu.sa" target="_blank" class="btn btn-outline header-link" style="display: none;">
                 الموقع الرسمي
-                <i class="fa-solid fa-globe"></i>
+                <img src="https://nre-nec.github.io/pictures/logo-w.png" alt="شعار الموقع"
+                    style="height: 1.25em; width: auto; object-fit: contain;">
             </a>
         </div>
     </header>
@@ -746,8 +843,7 @@
                     <h4 style="margin-bottom: 0.5rem;">تأكيد التسجيل</h4>
                     <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">بعد التحويل، انتقل
                         للنموذج لرفع الإيصال وإكمال بياناتك.</p>
-                    <a href="#" id="sidebar-register-btn" target="_blank"
-                        class="btn btn-primary w-full justify-center">
+                    <a href="#" id="sidebar-register-btn" target="_blank" class="btn btn-primary w-full justify-center">
                         تعبئة نموذج التسجيل
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
@@ -765,8 +861,8 @@
                 <div class="flex items-center justify-between flex-col"
                     style="flex-direction: row; flex-wrap: wrap; gap: 2rem;">
                     <div>
-                        <img src="https://nre-nec.github.io/pictures/logo.png"
-                            style="height: 40px; filter: brightness(0) invert(1); margin-bottom: 1rem;">
+                        <img src="https://nre-nec.github.io/pictures/cce2.png"
+                            style="height: 40px; margin-bottom: 1rem;">
                         <p style="max-width: 300px; font-size: 0.9rem; color: var(--text-tertiary);">
                             كلية الشمال للتمريض - مركز الاستشارات والتدريب الطبي.
                         </p>
@@ -921,6 +1017,38 @@
 
             // Initialize
             renderCourses();
+
+            // Interactive Sparkles
+            const heroSection = document.querySelector('.hero');
+            heroSection.addEventListener('mousemove', (e) => {
+                // Throttle creation for performance
+                if (Math.random() > 0.1) return;
+
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+
+                // Position relative to hero
+                const rect = heroSection.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                sparkle.style.left = `${x}px`;
+                sparkle.style.top = `${y}px`;
+
+                // Random movement direction
+                const tx = (Math.random() - 0.5) * 50;
+                const ty = -Math.random() * 50 - 20; // Move up
+
+                sparkle.style.setProperty('--tx', `${tx}px`);
+                sparkle.style.setProperty('--ty', `${ty}px`);
+
+                heroSection.appendChild(sparkle);
+
+                // Cleanup
+                sparkle.addEventListener('animationend', () => {
+                    sparkle.remove();
+                });
+            });
         });
     </script>
 </body>
