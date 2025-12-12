@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز الاستشارات بكلية الشمال - بوابة الدورات</title>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Embedded CSS -->
+    <style>
+        /* Google Fonts - Tajawal (Keeping Arabic identity but styling like Inter) */
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+        :root {
+            /* Framer Template Tokens Replicated */
+            --bg-main: #0e0f11;
+            --bg-surface: rgba(255, 255, 255, 0.03);
+            --bg-surface-hover: rgba(255, 255, 255, 0.08);
+            --border-color: rgba(255, 255, 255, 0.08);
+
+            --primary-color: #4d77ff;
+            /* energetic blue */
+            --accent-color: #ff4649;
+            /* coral red */
+
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-tertiary: rgba(255, 255, 255, 0.4);
+
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --radius-xl: 40px;
+
+            --font-main: 'Tajawal', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            outline: none;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.5;
+            direction: rtl;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+
+        /* Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .gap-2 {
+            gap: 0.5rem;
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        .gap-6 {
+            gap: 1.5rem;
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--text-primary);
+            font-weight: 800;
+            /* Bold headings like 'Inter Display' */
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            cursor: pointer;
+            border: 1px solid transparent;
+            font-family: inherit;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 0 20px rgba(77, 119, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(77, 119, 255, 0.5);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Header */
+        header {
+            background: rgba(14, 15, 17, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1.2rem 0;
+        }
+
+        .brand-logo {
+            height: 3rem;
+            filter: brightness(0) invert(1);
+            /* Make logo white */
+        }
+
+        .brand-text h1 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .brand-text p {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Ambient Glow Background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(77, 119, 255, 0.15) 0%, rgba(14, 15, 17, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(77, 119, 255, 0.1);
+            color: #80a0ff;
+            border: 1px solid rgba(77, 119, 255, 0.2);
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            color: var(--text-secondary);
+        }
+
+        /* Alerts / Info Cards */
+        .alerts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .alert-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .alert-card:hover {
+            background: var(--bg-surface-hover);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .alert-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .alert-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .alert-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Courses Grid */
+        .courses-section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title i {
+            color: var(--primary-color);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .course-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 16px;
+            background: rgba(77, 119, 255, 0.1);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .course-desc {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-grow: 1;
+            font-size: 1rem;
+        }
+
+        .course-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        /* Tags/Features */
+        .feature-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Sidebar (Glassmorphism heavily applied) */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 199;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            /* RTL default */
+            bottom: 0;
+            width: 100%;
+            max-width: 500px;
+            background: #151619;
+            /* Slightly lighter than pure black */
+            border-right: 1px solid var(--border-color);
+            /* Adjustment for RTL */
+            z-index: 200;
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Revert border logic for RTL: Sidebar is on Right, so border should be on Left? 
+   No, just keep it simple.
+*/
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .sidebar-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-content {
+            padding: 2rem;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        /* Steps in Sidebar */
+        .step-item {
+            position: relative;
+            padding-right: 3rem;
+            /* Space for line */
+            padding-bottom: 3rem;
+        }
+
+        .step-item::before {
+            content: '';
+            position: absolute;
+            right: 11px;
+            /* Align with dot center */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .step-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .step-item:last-child::before {
+            display: none;
+        }
+
+        .step-number {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            color: white;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 0 0 4px var(--bg-main);
+        }
+
+        /* Bank Card - Dark Premium */
+        .bank-card {
+            background: linear-gradient(135deg, #1c1d21, #0a0a0c);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .bank-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(77, 119, 255, 0.2), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .copy-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 5rem 0 3rem;
+            margin-top: 4rem;
+            background: #090a0c;
+        }
+
+        .footer-link {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .sidebar {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <img src="https://nre-nec.github.io/pictures/logo.png" alt="شعار الكلية" class="brand-logo">
+                <div class="brand-text">
+                    <h1>مركز الاستشارات بكلية الشمال</h1>
+                    <p>بوابة الدورات المعتمدة</p>
+                </div>
+            </div>
+            <!-- Desktop visible only check via CSS media query if needed, or inline -->
+            <style>
+                @media(min-width: 768px) {
+                    .header-link {
+                        display: inline-flex !important;
+                    }
+                }
+            </style>
+            <a href="https://nec.edu.sa" target="_blank" class="btn btn-outline header-link" style="display: none;">
+                الموقع الرسمي
+                <i class="fa-solid fa-globe"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Hero Section -->
+        <section class="hero text-center">
+
+            <div class="badge">
+                <i class="fa-solid fa-certificate"></i>
+                معتمد من جمعية القلب السعودية
+            </div>
+
+            <h1 class="hero-title">
+                استثمر في مستقبلك المهني <br>
+                مع دوراتنا الطبية المعتمدة
+            </h1>
+
+            <p>
+                نقدم مجموعة من الدورات التدريبية عالية الجودة للممارسين الصحيين والطلاب، برسوم شاملة وشهادات فورية.
+            </p>
+
+            <div class="alerts-grid">
+                <div class="alert-card">
+                    <div class="alert-icon">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
+                    <div>
+                        <h4>ملاحظة هامة</h4>
+                        <p>يجب إرفاق صورة إشعار السداد في نموذج التسجيل</p>
+                    </div>
+                </div>
+
+                <div class="alert-card">
+                    <div class="alert-icon">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+                    <div>
+                        <h4>شامل الرسوم</h4>
+                        <p>جميع الرسوم تشمل الشهادات وضريبة القيمة المضافة</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Courses Section -->
+        <section class="courses-section" id="courses">
+            <div class="section-title">
+                <i class="fa-solid fa-layer-group"></i>
+                الدورات المتاحـة للتسجيل
+            </div>
+
+            <div class="courses-grid" id="courses-grid">
+                <!-- Loaded via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>إكمال عملية التسجيل</h3>
+            <button id="close-sidebar" class="btn-outline"
+                style="border:none; width: 36px; height: 36px; display:flex; align-items:center; justify-content:center; padding:0; background:transparent;">
+                <i class="fa-solid fa-xmark" style="font-size: 1.2rem;"></i>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+
+            <!-- Step 1 -->
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div style="padding-right: 1rem;">
+                    <h4 style="margin-bottom: 0.5rem;">الدورة المختارة</h4>
+                    <div
+                        style="background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                        <h3 id="sidebar-course-title" style="font-size: 1.1rem; margin-bottom: 0.25rem;">...</h3>
+                        <p id="sidebar-course-price"
+                            style="color: var(--primary-color); font-weight: bold; font-size: 1.2rem;">...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div style="padding-right: 1rem;">
+                    <h4 style="margin-bottom: 0.5rem;">التحويل البنكي</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">يرجى تحويل مبلغ
+                        الدورة إلى الحساب التالي:</p>
+
+                    <div class="bank-card">
+                        <div class="flex justify-between items-start" style="margin-bottom: 1.5rem;">
+                            <span style="font-size: 0.8rem; opacity: 0.7;">مصرف الإنماء</span>
+                            <i class="fa-solid fa-building-columns" style="opacity: 0.5;"></i>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <p style="font-size: 0.75rem; opacity: 0.5; margin-bottom: 4px;">اسم المستفيد</p>
+                            <p style="font-weight: bold;">شركة الشمال التعليمية للتعليم</p>
+                        </div>
+
+                        <div class="flex justify-between items-end" style="margin-bottom: 1.5rem;">
+                            <div>
+                                <p style="font-size: 0.75rem; opacity: 0.5; margin-bottom: 4px;">رقم الحساب</p>
+                                <p style="font-family: monospace; letter-spacing: 1px;">68202025935004</p>
+                            </div>
+                            <button class="copy-btn" onclick="copyToClipboard('68202025935004', this)">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p style="font-size: 0.75rem; opacity: 0.5; margin-bottom: 4px;">الآيبان (IBAN)</p>
+                                <p style="font-family: monospace; letter-spacing: 1px; font-size: 0.85rem;">
+                                    SA3905000068202025935004</p>
+                            </div>
+                            <button class="copy-btn" onclick="copyToClipboard('SA3905000068202025935004', this)">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div style="padding-right: 1rem;">
+                    <h4 style="margin-bottom: 0.5rem;">تأكيد التسجيل</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">بعد التحويل، انتقل
+                        للنموذج لرفع الإيصال وإكمال بياناتك.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLS..." target="_blank"
+                        class="btn btn-primary w-full justify-center">
+                        تعبئة نموذج التسجيل
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="flex flex-col" style="gap: 2rem;">
+
+                <div class="flex items-center justify-between flex-col"
+                    style="flex-direction: row; flex-wrap: wrap; gap: 2rem;">
+                    <div>
+                        <img src="https://nre-nec.github.io/pictures/logo.png"
+                            style="height: 40px; filter: brightness(0) invert(1); margin-bottom: 1rem;">
+                        <p style="max-width: 300px; font-size: 0.9rem; color: var(--text-tertiary);">
+                            كلية الشمال للتمريض - مركز الاستشارات والتدريب الطبي.
+                        </p>
+                    </div>
+
+                    <div class="flex gap-8">
+                        <div>
+                            <h4 style="margin-bottom: 1rem; font-size: 1rem;">روابط</h4>
+                            <a href="https://nec.edu.sa" class="footer-link">الموقع الرسمي</a>
+                            <a href="#" class="footer-link">الشهادات</a>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 1rem; font-size: 1rem;">تواصل</h4>
+                            <a href="mailto:eservices@nec.edu.sa" class="footer-link">eservices@nec.edu.sa</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center"
+                    style="border-top: 1px solid var(--border-color); padding-top: 2rem; color: var(--text-tertiary); font-size: 0.85rem;">
+                    &copy; 2025 مركز الاستشارات بكلية الشمال. جميع الحقوق محفوظة.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Embedded JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Course Data (Simulating Database)
+            const courses = [
+                {
+                    id: 'bls',
+                    title: 'دورة دعم الحياة الأساسي (BLS)',
+                    description: 'دورة معتمدة لتعلم أساسيات الإنعاش القلبي الرئوي واستخدام جهاز الصدمات.',
+                    price: '300 ريال',
+                    icon: 'fa-heart-pulse',
+                    features: ['معتمدة من جمعية القلب', 'شهادة فورية', 'للممارسين الصحيين']
+                },
+                {
+                    id: 'acls',
+                    title: 'دورة دعم الحياة المتقدم (ACLS)',
+                    description: 'دورة متقدمة للتعامل مع الحالات الحرجة وتوقف القلب (للأطباء والتمريض).',
+                    price: '650 ريال',
+                    icon: 'fa-user-doctor',
+                    features: ['تتطلب BLS سارية', 'سيناريوهات واقعية', 'معتمدة']
+                },
+                {
+                    id: 'hsfa',
+                    title: 'الإسعافات الأولية (HSFA)',
+                    description: 'دورة عامة للجمهور والممارسين لتعلم الإسعافات الأولية للحالات الطارئة.',
+                    price: '300 ريال',
+                    icon: 'fa-kit-medical',
+                    features: ['للجميع', 'إسعاف الجروح والحروق', 'معتمدة']
+                },
+                {
+                    id: 'placement',
+                    title: 'اختبارات تحديد المستوى',
+                    description: 'باكج اختبارات لمن لديهم خبرة سابقة أو دورات ويرغبون بالتجديد.',
+                    price: 'تبدأ من 75 ريال',
+                    icon: 'fa-clipboard-check',
+                    features: ['تجديد سريع', 'BLS / ACLS / HSFA', 'اختبار نظري وعملي']
+                }
+            ];
+
+            const coursesGrid = document.getElementById('courses-grid');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const closeBtn = document.getElementById('close-sidebar');
+
+            // Render Courses
+            function renderCourses() {
+                coursesGrid.innerHTML = courses.map(course => `
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fa-solid ${course.icon}"></i>
+                </div>
+                <!-- Interactive Glow Effect Target -->
+                
+                <h3 class="course-title">${course.title}</h3>
+                <p class="course-desc">${course.description}</p>
+                
+                <div class="flex flex-wrap gap-2 mb-4" style="gap: 8px; margin-bottom: 2rem;">
+                    ${course.features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
+                </div>
+
+                <div class="flex justify-between items-center" style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                    <span class="course-price">${course.price}</span>
+                    <button class="btn btn-outline" onclick="openSidebar('${course.id}')">
+                        <span>سجل الآن</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        `).join('');
+
+                // Add Mouse Move Event for Glow Effect
+                document.querySelectorAll('.course-card').forEach(card => {
+                    card.addEventListener('mousemove', e => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        card.style.setProperty('--mouse-x', `${x}px`);
+                        card.style.setProperty('--mouse-y', `${y}px`);
+                    });
+                });
+            }
+
+            // Sidebar Functions
+            window.openSidebar = function (courseId) {
+                const course = courses.find(c => c.id === courseId);
+                if (!course) return;
+
+                // Update Sidebar Content
+                document.getElementById('sidebar-course-title').textContent = course.title;
+                document.getElementById('sidebar-course-price').textContent = course.price;
+
+                // Show Sidebar
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            function closeSidebar() {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // Event Listeners
+            closeBtn.addEventListener('click', closeSidebar);
+            overlay.addEventListener('click', closeSidebar);
+
+            // Copy to Clipboard
+            window.copyToClipboard = function (text, btnElement) {
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalIcon = btnElement.innerHTML;
+                    btnElement.innerHTML = '<i class="fa-solid fa-check text-green-500"></i>';
+                    btnElement.style.borderColor = '#10b981';
+
+                    setTimeout(() => {
+                        btnElement.innerHTML = '<i class="fa-regular fa-copy"></i>';
+                        btnElement.style.borderColor = 'rgba(255,255,255,0.2)';
+                    }, 2000);
+                });
+            };
+
+            // Initialize
+            renderCourses();
+        });
+    </script>
+</body>
+
+</html>
