@@ -6,35 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مركز الاستشارات بكلية الشمال - بوابة الدورات</title>
 
+    <!-- Tailwind CSS (for compatibility with new design tokens) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 900: '#0f172a' },
+                        amber: { 500: '#f59e0b' },
+                        gray: { 50: '#f9fafb' }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts - Cairo & Tajawal -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Embedded CSS -->
     <style>
-        /* Google Fonts - Tajawal (Keeping Arabic identity but styling like Inter) */
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
-
         :root {
-            /* Framer Template Tokens Replicated */
-            --bg-main: #0e0f11;
-            --bg-surface: rgba(255, 255, 255, 0.03);
-            --bg-surface-hover: rgba(255, 255, 255, 0.08);
-            --border-color: rgba(255, 255, 255, 0.08);
+            /* Design Specs from Admin Affairs Portal */
+            --primary-color: #0f172a;
+            /* Slate 900 */
+            --accent-color: #f59e0b;
+            /* Amber 500 */
 
-            --primary-color: #4d77ff;
-            /* energetic blue */
-            --accent-color: #ff4649;
-            /* coral red */
+            --bg-main: #f9fafb;
+            /* Gray 50 */
+            --bg-surface: #ffffff;
+            --bg-surface-hover: #ffffff;
+            /* We handle hover with transform/shadow */
 
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.6);
-            --text-tertiary: rgba(255, 255, 255, 0.4);
+            --border-color: #e2e8f0;
+            /* Slate 200 */
+
+            --text-primary: #1e293b;
+            /* Slate 800 */
+            --text-secondary: #64748b;
+            /* Slate 500 */
+            --text-tertiary: #94a3b8;
+            /* Slate 400 */
 
             --radius-md: 12px;
             --radius-lg: 24px;
             --radius-xl: 40px;
 
-            --font-main: 'Tajawal', sans-serif;
+            --font-main: 'Cairo', sans-serif;
         }
 
         * {
@@ -51,8 +78,16 @@
             color: var(--text-primary);
             line-height: 1.5;
             direction: rtl;
-            overflow-x: hidden;
             min-height: 100vh;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Pattern (SVG Dots) */
+        .hero-pattern {
+            background-color: #0f172a;
+            /* Slate 900 base for Hero */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         /* Scrollbar */
@@ -65,12 +100,31 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
+            background: #cbd5e1;
+            /* Slate 300 */
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-secondary);
+            background: #94a3b8;
+            /* Slate 400 */
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--text-primary);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-weight: 400;
         }
 
         /* Utilities */
@@ -124,98 +178,108 @@
             text-align: center;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            color: var(--text-primary);
-            font-weight: 800;
-            /* Bold headings like 'Inter Display' */
-            letter-spacing: -0.02em;
-        }
-
-        p {
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
         /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            padding: 1rem 2rem;
-            border-radius: var(--radius-md);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            /* Rounded full */
             font-weight: 700;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: all 0.3s ease;
             cursor: pointer;
             border: 1px solid transparent;
             font-family: inherit;
-            font-size: 1rem;
-            position: relative;
-            overflow: hidden;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
         .btn-primary {
             background: var(--primary-color);
             color: white;
-            box-shadow: 0 0 20px rgba(77, 119, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Button Sheen Effect */
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
-            transform: skewX(-25deg);
-            transition: left 0.75s;
-        }
-
-        .btn-primary:hover::after {
-            left: 200%;
         }
 
         .btn-primary:hover {
+            background: #1e293b;
+            /* Slightly lighter slate for hover */
             transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(77, 119, 255, 0.5);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            /* shadow-xl */
         }
 
         .btn-outline {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: none;
         }
 
         .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: var(--primary-color);
+            color: white;
             transform: translateY(-2px);
         }
 
         /* Header */
         header {
-            background: rgba(14, 15, 17, 0.7);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
+            background: white;
+            /* Slate-900 request for header? User said "Primary: Slate-900 (used for Header...)" */
+            /* Wait, user said "Primary: Slate-900 ... used for Header". So Header should be Slate 900. */
+            background: var(--primary-color);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
-            padding: 1.2rem 0;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header .brand-text h1,
+        header h1 {
+            color: white;
+        }
+
+        header .brand-text p {
+            color: var(--accent-color);
+            /* Amber 500 */
+        }
+
+        header .brand-logo {
+            filter: brightness(0) invert(1);
+            /* Make logo white if it's colored */
+        }
+
+        /* Header Buttons Override */
+        header .btn-outline {
+            border-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        header .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
         }
 
         .brand-logo {
             height: 3rem;
             height: 3rem;
             /* filter removed for new white logo */
+        }
+
+        .alert-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.1rem;
+            font-weight: 700;
+        }
+
+        .alert-card p {
+            font-size: 0.8rem;
+            color: var(--accent-color) !important;
+            /* Forced application */
+            line-height: 1.4;
+            font-weight: 600;
         }
 
         .brand-text h1 {
@@ -233,232 +297,222 @@
 
         /* Hero Section */
         .hero {
-            padding: 6rem 0 4rem;
+            padding: 5rem 0 6rem;
             position: relative;
             overflow: hidden;
+            /* Apply Hero Pattern here */
+            background-color: #0f172a;
+            /* Slate 900 */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            color: white;
+            text-align: center;
         }
 
-        /* Ambient Glow Background */
         .hero::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(77, 119, 255, 0.15) 0%, rgba(14, 15, 17, 0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: -1;
+            display: none;
         }
+
+        /* Remove old glow */
 
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(77, 119, 255, 0.1);
-            color: #80a0ff;
-            border: 1px solid rgba(77, 119, 255, 0.2);
+            padding: 0.6rem 1.8rem;
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            /* Amber 400 */
+            border: 1px solid rgba(245, 158, 11, 0.3);
             border-radius: 9999px;
-            font-size: 0.85rem;
+            font-size: 1rem;
+            /* Increased from 0.85rem */
             font-weight: 700;
             margin-bottom: 2rem;
+            font-family: 'Tajawal', sans-serif;
+            /* Changed to Tajawal */
         }
 
         .hero-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.3);
-            background: linear-gradient(to right, #4d4d4d 0%, #fff 50%, #4d4d4d 100%);
-            background-size: 500px;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 3s infinite linear;
+            font-size: 4rem;
+            /* Increased from 3.5rem */
+            font-weight: 800;
+            /* Extra bold */
             margin-bottom: 1.5rem;
-            line-height: 1.2;
-            /* text-shadow removed as it conflicts with background-clip: text */
+            line-height: 1.6;
+            /* Increased spacing (approx half line gap added to standard) */
+            color: white;
+            font-family: 'Tajawal', sans-serif;
+            /* Changed to Tajawal */
+            letter-spacing: normal;
         }
 
-        @keyframes shimmer {
-            0% {
-                background-position: -500px 0;
-            }
-
-            100% {
-                background-position: 500px 0;
-            }
+        /* Gradient Text Emphasis */
+        .hero-title .highlight {
+            background: linear-gradient(to right, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            /* standard property added */
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             max-width: 600px;
             margin: 0 auto 3rem;
-            color: var(--text-secondary);
+            color: #cbd5e1;
+            /* Slate 300 */
         }
 
-        /* Alerts / Info Cards */
+        /* Alert Cards */
         .alerts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 4rem;
+            gap: 1rem;
+            margin-top: 3rem;
+            max-width: 750px;
+            /* Reduced from 900px */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .alert-card {
-            background: var(--bg-surface);
+            background: white;
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            padding: 0.75rem 1rem;
+            /* Reduced vertical padding */
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
             transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            color: var(--text-primary);
         }
 
-        /* Glowing Border Effect - Linear Shimmer */
-        .alert-card::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            /* Slight bleed for border */
-            background: linear-gradient(110deg, transparent 25%, rgba(77, 119, 255, 0.5) 50%, transparent 75%);
-            background-size: 200% 100%;
-            animation: border-shimmer 4s linear infinite;
-            z-index: -2;
-            border-radius: var(--radius-lg);
-            top: -1px;
-            left: -1px;
-            right: -1px;
-            bottom: -1px;
-            width: auto;
-            height: auto;
-            transform: none;
-        }
-
+        .alert-card::before,
         .alert-card::after {
-            content: '';
-            position: absolute;
-            inset: 2px;
-            background: var(--bg-surface);
-            border-radius: calc(var(--radius-lg) - 2px);
-            z-index: -1;
+            display: none;
         }
 
-        @keyframes border-shimmer {
-            0% {
-                background-position: 200% 0;
-            }
-
-            100% {
-                background-position: -200% 0;
-            }
-        }
+        /* Remove dark glowing borders */
 
         .alert-card:hover {
-            background: var(--bg-surface-hover);
-            border-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            /* shadow-2xl */
         }
 
         .alert-icon {
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: var(--radius-md);
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
+            width: 2.25rem;
+            /* Reduced from 2.5rem */
+            height: 2.25rem;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: var(--accent-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.1rem;
+            /* Slightly smaller icon font */
             flex-shrink: 0;
         }
 
-        .alert-content h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .alert-content p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        /* Courses Grid */
+        /* Course Cards */
         .courses-section {
-            padding: 6rem 0;
+            padding: 4rem 0;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.25rem;
             margin-bottom: 3rem;
             display: flex;
             align-items: center;
             gap: 1rem;
+            color: var(--primary-color);
+            font-weight: 700;
         }
 
         .section-title i {
-            color: var(--primary-color);
+            color: var(--accent-color);
         }
 
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
         }
 
         .course-card {
-            background: var(--bg-surface);
-            /* Border provided by ::after inset or glow */
+            background: white;
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
             padding: 2rem;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             display: flex;
             flex-direction: column;
             overflow: hidden;
             height: 100%;
-            z-index: 1;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            /* shadow-md */
         }
 
-        /* Glowing Border (Rotating Conic Gradient) */
+        /* Remove dark mode specific glow/spinners */
+        .course-card::before,
+        .course-card::after {
+            display: none;
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+            /* hover:-translate-y-1 */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            /* shadow-2xl */
+        }
+
+        /* Top Accent Line */
         .course-card::before {
             content: '';
+            display: block;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 150%;
-            /* Make it large enough to cover the card when rotating */
-            height: 150%;
-            background: conic-gradient(from 0deg, transparent 0%, var(--primary-color) 10%, transparent 20%);
-            animation: rotate 4s linear infinite;
-            z-index: -2;
-            border-radius: var(--radius-lg);
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            /* h-1 in user request is 0.25rem = 4px */
+            background: var(--primary-color);
+            transition: background 0.3s;
         }
 
-        /* Card Background Mask - Inset 4px for thicker border */
-        .course-card::after {
-            content: '';
-            position: absolute;
-            inset: 4px;
-            background: var(--bg-surface);
-            /* Matches main bg */
-            border-radius: calc(var(--radius-lg) - 4px);
-            z-index: -1;
+        .course-card:hover::before {
+            background: var(--accent-color);
+        }
+
+        .course-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background: #f8fafc;
+            /* Slate 50 */
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-card:hover .course-icon {
+            color: var(--accent-color);
         }
 
         /* Text Shimmer REMOVED as per user request */
         .course-title {
             font-size: 1.5rem;
             margin-bottom: 0.75rem;
-            color: var(--text-primary);
+            color: var(--primary-color);
+            /* Reverted to Dark/Primary */
+            font-weight: 700;
         }
 
         /* Rotate Animation */
@@ -511,10 +565,13 @@
 
 
         .course-desc {
-            color: var(--text-secondary);
+            color: var(--accent-color);
+            /* Golden description as 'subtitle' */
             margin-bottom: 2rem;
             flex-grow: 1;
             font-size: 1rem;
+            font-weight: 600;
+            /* Added weight to make it feel more like a 'title' */
         }
 
         .course-price {
@@ -550,39 +607,50 @@
             pointer-events: auto;
         }
 
+        /* Sidebar */
         .sidebar {
+            background: white;
+            border-right: 1px solid var(--border-color);
             position: fixed;
             top: 0;
             right: 0;
-            /* RTL default */
             bottom: 0;
             width: 100%;
             max-width: 500px;
-            background: #151619;
-            /* Slightly lighter than pure black */
-            border-right: 1px solid var(--border-color);
-            /* Adjustment for RTL */
             z-index: 200;
             transform: translateX(100%);
             transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
+            box-shadow: -10px 0 25px rgba(0, 0, 0, 0.1);
         }
-
-        /* Revert border logic for RTL: Sidebar is on Right, so border should be on Left? 
-   No, just keep it simple.
-*/
 
         .sidebar.active {
             transform: translateX(0);
         }
 
         .sidebar-header {
-            padding: 2rem;
+            padding: 1.5rem;
             border-bottom: 1px solid var(--border-color);
+            background: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .sidebar-header h3 {
+            color: var(--primary-color);
+        }
+
+        .sidebar-header .btn-outline {
+            border-color: transparent;
+            color: #94a3b8;
+        }
+
+        .sidebar-header .btn-outline:hover {
+            background: #f1f5f9;
+            color: var(--accent-color);
+            transform: none;
         }
 
         .sidebar-content {
@@ -591,49 +659,105 @@
             flex-grow: 1;
         }
 
-        /* Steps in Sidebar */
-        .step-item {
+        /* Bank Card */
+        .bank-card {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            border-radius: 16px;
+            padding: 1.5rem;
+            color: white;
             position: relative;
-            padding-right: 3rem;
-            /* Space for line */
-            padding-bottom: 3rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
+        .bank-card p {
+            color: #cbd5e1;
+        }
+
+        .bank-card p[style*="font-weight: bold"],
+        .bank-card p[style*="monospace"] {
+            color: white;
+        }
+
+        /* Steps */
+        /* Flowchart Steps */
+        .step-item {
+            position: relative;
+            padding-right: 3.5rem;
+            /* Space for the timeline on the right */
+            padding-bottom: 2.5rem;
+            border-left: 2px dashed rgba(226, 232, 240, 0);
+            /* Hidden left border, using ::before for right line */
+        }
+
+        /* The vertical connecting line */
         .step-item::before {
             content: '';
             position: absolute;
-            right: 11px;
-            /* Align with dot center */
-            top: 0;
-            bottom: 0;
+            right: 1.25rem;
+            /* Center align with the circle (approx half of 2.5rem width circle is 1.25) wait circle is 32px */
+            /* Circle is 2.5rem? No, let's redefine circle size */
+            top: 2.5rem;
+            /* Start below the circle */
+            bottom: -0.5rem;
+            /* extend to next item */
             width: 2px;
-            background: var(--border-color);
+            background: #e2e8f0;
+            /* Light gray line */
+            background-image: linear-gradient(to bottom, #cbd5e1 50%, transparent 50%);
+            background-size: 2px 10px;
+            background-repeat: repeat-y;
+            /* Make it a dashed line for flow feel */
         }
 
         .step-item:last-child {
             padding-bottom: 0;
+            border: none;
         }
 
         .step-item:last-child::before {
             display: none;
         }
 
+        /* The Step Circle/Node */
         .step-number {
             position: absolute;
             right: 0;
             top: 0;
-            width: 24px;
-            height: 24px;
-            background: var(--primary-color);
+            width: 2.5rem;
+            height: 2.5rem;
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
             border-radius: 50%;
-            color: white;
-            font-size: 0.8rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-weight: 800;
+            font-size: 1rem;
             z-index: 2;
-            box-shadow: 0 0 0 4px var(--bg-main);
+            box-shadow: 0 0 0 4px white;
+            /* white halo */
+        }
+
+        /* Arrow head for the flow line */
+        .step-item:not(:last-child)::after {
+            content: '\f107';
+            /* FontAwesome Angle Down */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 0.9rem;
+            /* Center with line approx */
+            bottom: -15px;
+            color: #94a3b8;
+            background: white;
+            z-index: 1;
+        }
+
+        /* Active/Done State styling if needed in future */
+        .step-item.done .step-number {
+            background: var(--primary-color);
+            color: white;
         }
 
         /* Bank Card - Dark Premium */
@@ -782,7 +906,7 @@
 
             <h1 class="hero-title">
                 استثمر في مستقبلك المهني <br>
-                مع دوراتنا الطبية المعتمدة
+                <span class="highlight">مع دوراتنا الطبية المعتمدة</span>
             </h1>
 
             <p>
@@ -919,27 +1043,28 @@
     <!-- Footer -->
     <!-- Footer -->
     <footer
-        style="border-top: 1px solid var(--border-color); padding: 1.5rem 0; margin-top: 4rem; background: #090a0c;">
+        style="border-top: 1px solid var(--border-color); padding: 3rem 0; margin-top: 4rem; background: var(--primary-color); color: #cbd5e1;">
         <div class="container flex items-center justify-between" style="flex-wrap: wrap; gap: 1rem;">
 
             <div class="flex items-center gap-4">
-                <img src="https://nre-nec.github.io/pictures/cce.png" style="height: 35px;">
-                <p style="font-size: 0.9rem; color: var(--text-tertiary); margin: 0;">
+                <img src="https://nre-nec.github.io/pictures/cce.png"
+                    style="height: 40px; filter: brightness(0) invert(1) opacity(0.8);">
+                <p style="font-size: 0.9rem; color: #94a3b8; margin: 0;">
                     كلية الشمال للتمريض - مركز الاستشارات
                 </p>
             </div>
 
             <div class="flex items-center gap-6" style="font-size: 0.9rem;">
-                <a href="https://nec.edu.sa" class="footer-link" style="margin: 0;">الموقع الرسمي</a>
+                <a href="https://nec.edu.sa" class="footer-link" style="margin: 0; color: #cbd5e1;">الموقع الرسمي</a>
 
-                <a href="https://wa.me/966535742843" class="footer-link" style="margin: 0;">
+                <a href="https://wa.me/966535742843" class="footer-link" style="margin: 0; color: #cbd5e1;">
                     <i class="fa-brands fa-whatsapp" style="margin-left: 4px;"></i>
                     واتساب
                 </a>
 
-                <span style="width: 1px; height: 16px; background: var(--border-color);"></span>
+                <span style="width: 1px; height: 16px; background: rgba(255,255,255,0.1);"></span>
 
-                <span style="color: var(--text-tertiary); font-size: 0.85rem;">
+                <span style="color: #64748b; font-size: 0.85rem;">
                     &copy; 2025
                 </span>
             </div>
