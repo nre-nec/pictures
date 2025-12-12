@@ -746,7 +746,7 @@
                     <h4 style="margin-bottom: 0.5rem;">تأكيد التسجيل</h4>
                     <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">بعد التحويل، انتقل
                         للنموذج لرفع الإيصال وإكمال بياناتك.</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLS..." target="_blank"
+                    <a href="#" id="sidebar-register-btn" target="_blank"
                         class="btn btn-primary w-full justify-center">
                         تعبئة نموذج التسجيل
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -799,36 +799,40 @@
             // Course Data (Simulating Database)
             const courses = [
                 {
-                    id: 'bls',
-                    title: 'دورة دعم الحياة الأساسي (BLS)',
-                    description: 'دورة معتمدة لتعلم أساسيات الإنعاش القلبي الرئوي واستخدام جهاز الصدمات.',
-                    price: '300 ريال',
-                    icon: 'fa-heart-pulse',
-                    features: ['معتمدة من جمعية القلب', 'شهادة فورية', 'للممارسين الصحيين']
-                },
-                {
-                    id: 'acls',
-                    title: 'دورة دعم الحياة المتقدم (ACLS)',
-                    description: 'دورة متقدمة للتعامل مع الحالات الحرجة وتوقف القلب (للأطباء والتمريض).',
-                    price: '650 ريال',
-                    icon: 'fa-user-doctor',
-                    features: ['تتطلب BLS سارية', 'سيناريوهات واقعية', 'معتمدة']
-                },
-                {
                     id: 'hsfa',
-                    title: 'الإسعافات الأولية (HSFA)',
+                    title: 'دورة HSFA (الإسعافات الأولية والإنعاش القلبي الرئوي)',
                     description: 'دورة عامة للجمهور والممارسين لتعلم الإسعافات الأولية للحالات الطارئة.',
                     price: '300 ريال',
                     icon: 'fa-kit-medical',
-                    features: ['للجميع', 'إسعاف الجروح والحروق', 'معتمدة']
+                    features: ['للجميع', 'إسعاف الجروح والحروق', 'معتمدة'],
+                    link: 'https://form.jotform.com/nre_nre812/01'
+                },
+                {
+                    id: 'bls',
+                    title: 'دورة BLS (دعم الحياة الأساسي)',
+                    description: 'دورة معتمدة لتعلم أساسيات الإنعاش القلبي الرئوي واستخدام جهاز الصدمات.',
+                    price: '300 ريال',
+                    icon: 'fa-heart-pulse',
+                    features: ['معتمدة من جمعية القلب', 'شهادة فورية', 'للممارسين الصحيين'],
+                    link: 'https://form.jotform.com/nre_nre812/bls'
                 },
                 {
                     id: 'placement',
-                    title: 'اختبارات تحديد المستوى',
-                    description: 'باكج اختبارات لمن لديهم خبرة سابقة أو دورات ويرغبون بالتجديد.',
-                    price: 'تبدأ من 75 ريال',
+                    title: 'اختبار تحديد المستوى (للحاصلين على دورات سابقة)',
+                    description: 'اختبارات لمن لديهم خبرة سابقة أو دورات ويرغبون بالتجديد.',
+                    price: 'HSFA (75) - BLS (75) - ACLS (150)',
                     icon: 'fa-clipboard-check',
-                    features: ['تجديد سريع', 'BLS / ACLS / HSFA', 'اختبار نظري وعملي']
+                    features: ['تجديد سريع', 'BLS / ACLS / HSFA', 'اختبار نظري وعملي'],
+                    link: 'https://form.jotform.com/nre_nre812/003'
+                },
+                {
+                    id: 'acls',
+                    title: 'دورة ACLS (دعم الحياة المتقدم)',
+                    description: 'دورة متقدمة للتعامل مع الحالات الحرجة وتوقف القلب (للأطباء والتمريض).',
+                    price: '650 ريال (يوجد خصم في حال التجديد)',
+                    icon: 'fa-user-doctor',
+                    features: ['تتطلب BLS سارية', 'سيناريوهات واقعية', 'معتمدة'],
+                    link: 'https://www.jotform.com/nre_nre812/004'
                 }
             ];
 
@@ -883,6 +887,7 @@
                 // Update Sidebar Content
                 document.getElementById('sidebar-course-title').textContent = course.title;
                 document.getElementById('sidebar-course-price').textContent = course.price;
+                document.getElementById('sidebar-register-btn').href = course.link;
 
                 // Show Sidebar
                 sidebar.classList.add('active');
