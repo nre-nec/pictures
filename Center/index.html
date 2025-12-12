@@ -414,6 +414,7 @@
 
         .course-card {
             background: var(--bg-surface);
+            /* Border provided by ::after inset or glow */
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
             padding: 2rem;
@@ -423,16 +424,69 @@
             flex-direction: column;
             overflow: hidden;
             height: 100%;
+            z-index: 1;
         }
 
+        /* Glowing Border (Rotating Conic Gradient) */
         .course-card::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150%;
+            /* Make it large enough to cover the card when rotating */
+            height: 150%;
+            background: conic-gradient(from 0deg, transparent 0%, var(--primary-color) 10%, transparent 20%);
+            animation: rotate 4s linear infinite;
+            z-index: -2;
+            border-radius: var(--radius-lg);
+        }
+
+        /* Card Background Mask - Inset 4px for thicker border */
+        .course-card::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background: var(--bg-surface);
+            /* Matches main bg */
+            border-radius: calc(var(--radius-lg) - 4px);
+            z-index: -1;
+        }
+
+        /* Text Shimmer REMOVED as per user request */
+        .course-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        /* Rotate Animation */
+        @keyframes rotate {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes textShimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Ensure rotate keyframes exists if not defined elsewhere */
+        @keyframes rotate {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
 
         .course-card:hover {
@@ -454,10 +508,7 @@
             margin-bottom: 1.5rem;
         }
 
-        .course-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
+
 
         .course-desc {
             color: var(--text-secondary);
@@ -703,11 +754,18 @@
                     }
                 }
             </style>
-            <a href="https://nec.edu.sa" target="_blank" class="btn btn-outline header-link" style="display: none;">
-                الموقع الرسمي
-                <img src="https://nre-nec.github.io/pictures/logo-w.png" alt="شعار الموقع"
-                    style="height: 1.25em; width: auto; object-fit: contain;">
-            </a>
+            <div class="flex gap-4">
+                <a href="https://wa.me/966535742843" target="_blank" class="btn btn-outline header-link"
+                    style="border-color: rgba(37, 211, 102, 0.5); color: #25d366;">
+                    تواصل معنا
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.25em;"></i>
+                </a>
+                <a href="https://nec.edu.sa" target="_blank" class="btn btn-outline header-link" style="display: none;">
+                    الموقع الرسمي
+                    <img src="https://nre-nec.github.io/pictures/logo-w.png" alt="شعار الموقع"
+                        style="height: 1.25em; width: auto; object-fit: contain;">
+                </a>
+            </div>
         </div>
     </header>
 
@@ -859,38 +917,33 @@
     </aside>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="flex flex-col" style="gap: 2rem;">
+    <!-- Footer -->
+    <footer
+        style="border-top: 1px solid var(--border-color); padding: 1.5rem 0; margin-top: 4rem; background: #090a0c;">
+        <div class="container flex items-center justify-between" style="flex-wrap: wrap; gap: 1rem;">
 
-                <div class="flex items-center justify-between flex-col"
-                    style="flex-direction: row; flex-wrap: wrap; gap: 2rem;">
-                    <div>
-                        <img src="https://nre-nec.github.io/pictures/cce2.png"
-                            style="height: 40px; margin-bottom: 1rem;">
-                        <p style="max-width: 300px; font-size: 0.9rem; color: var(--text-tertiary);">
-                            كلية الشمال للتمريض - مركز الاستشارات والتدريب الطبي.
-                        </p>
-                    </div>
-
-                    <div class="flex gap-8">
-                        <div>
-                            <h4 style="margin-bottom: 1rem; font-size: 1rem;">روابط</h4>
-                            <a href="https://nec.edu.sa" class="footer-link">الموقع الرسمي</a>
-                            <a href="#" class="footer-link">الشهادات</a>
-                        </div>
-                        <div>
-                            <h4 style="margin-bottom: 1rem; font-size: 1rem;">تواصل</h4>
-                            <a href="mailto:eservices@nec.edu.sa" class="footer-link">eservices@nec.edu.sa</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center"
-                    style="border-top: 1px solid var(--border-color); padding-top: 2rem; color: var(--text-tertiary); font-size: 0.85rem;">
-                    &copy; 2025 مركز الاستشارات بكلية الشمال. جميع الحقوق محفوظة.
-                </div>
+            <div class="flex items-center gap-4">
+                <img src="https://nre-nec.github.io/pictures/cce.png" style="height: 35px;">
+                <p style="font-size: 0.9rem; color: var(--text-tertiary); margin: 0;">
+                    كلية الشمال للتمريض - مركز الاستشارات
+                </p>
             </div>
+
+            <div class="flex items-center gap-6" style="font-size: 0.9rem;">
+                <a href="https://nec.edu.sa" class="footer-link" style="margin: 0;">الموقع الرسمي</a>
+
+                <a href="https://wa.me/966535742843" class="footer-link" style="margin: 0;">
+                    <i class="fa-brands fa-whatsapp" style="margin-left: 4px;"></i>
+                    واتساب
+                </a>
+
+                <span style="width: 1px; height: 16px; background: var(--border-color);"></span>
+
+                <span style="color: var(--text-tertiary); font-size: 0.85rem;">
+                    &copy; 2025
+                </span>
+            </div>
+
         </div>
     </footer>
 
