@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>جدول الاختبارات النهائية للفصل الدراسي الثاني 2025-2026</title>
+
+  <!-- Font: Cairo (uses local if available; falls back gracefully offline) -->
+  <style>
+    @font-face {
+      font-family: "Cairo";
+      src: local("Cairo");
+      font-display: swap;
+    }
+  </style>
+
+  <style>
+    :root {
+      --purple: #6a3e6e;
+      --purple-2: #553057;
+      --bg: #f6f7fb;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card: rgba(255,255,255,0.55);
+      --card-2: rgba(255,255,255,0.75);
+      --border: rgba(106,62,110,0.18);
+      --shadow: 0 12px 35px rgba(31,41,55,0.12);
+      --shadow2: 0 8px 20px rgba(31,41,55,0.10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 85% 10%, rgba(106,62,110,0.20), transparent 55%),
+        radial-gradient(900px 500px at 15% 20%, rgba(106,62,110,0.12), transparent 55%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 60%);
+    }
+
+    /* Layout */
+    .app {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 20px 18px 34px;
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 980px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { position: relative; top: 0; }
+    }
+
+    /* Top bar */
+    .topbar {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+      justify-content: space-between;
+    }
+
+    .brand {
+      flex: 1;
+      padding: 16px 18px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(106,62,110,0.12), rgba(255,255,255,0.65));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    .brand::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: radial-gradient(900px 300px at 80% 0%, rgba(106,62,110,0.25), transparent 60%);
+      pointer-events: none;
+    }
+    .brand h1 {
+      margin: 0 0 4px 0;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--purple-2);
+      letter-spacing: 0.2px;
+    }
+    .brand .sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.70);
+      color: var(--purple-2);
+      padding: 10px 12px;
+      border-radius: 14px;
+      box-shadow: var(--shadow2);
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 13px;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      white-space: nowrap;
+      user-select: none;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.85);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 14px;
+      height: fit-content;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .section-title {
+      margin: 0 0 10px 0;
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--purple-2);
+      letter-spacing: 0.2px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .kpi {
+      padding: 10px 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.70);
+      border: 1px solid rgba(106,62,110,0.15);
+    }
+    .kpi .v {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--purple-2);
+      line-height: 1.1;
+    }
+    .kpi .l {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .filters {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .input {
+      width: 100%;
+      padding: 11px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(106,62,110,0.20);
+      background: rgba(255,255,255,0.75);
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+      font-weight: 700;
+      color: var(--text);
+    }
+    .input:focus {
+      border-color: rgba(106,62,110,0.40);
+      box-shadow: 0 0 0 3px rgba(106,62,110,0.10);
+    }
+
+    .day-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .day-btn {
+      border: 1px solid rgba(106,62,110,0.20);
+      background: rgba(255,255,255,0.70);
+      color: var(--purple-2);
+      border-radius: 12px;
+      padding: 10px 0;
+      cursor: pointer;
+      font-weight: 900;
+      font-size: 12px;
+      box-shadow: var(--shadow2);
+      transition: transform .12s ease, background .12s ease;
+      user-select: none;
+    }
+    .day-btn:hover { transform: translateY(-1px); background: rgba(255,255,255,0.88); }
+    .day-btn.active { background: rgba(106,62,110,0.12); border-color: rgba(106,62,110,0.45); }
+
+    .toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .pill {
+      text-align: center;
+      border-radius: 999px;
+      padding: 10px 8px;
+      border: 1px solid rgba(106,62,110,0.20);
+      background: rgba(255,255,255,0.70);
+      color: var(--purple-2);
+      font-weight: 900;
+      font-size: 12px;
+      cursor: pointer;
+      user-select: none;
+      transition: background .12s ease, transform .12s ease;
+    }
+    .pill:hover { transform: translateY(-1px); background: rgba(255,255,255,0.88); }
+    .pill.active { background: rgba(106,62,110,0.14); border-color: rgba(106,62,110,0.50); }
+
+    .note {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(106,62,110,0.06);
+      border: 1px dashed rgba(106,62,110,0.30);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+      font-weight: 650;
+    }
+
+    /* Main */
+    .main {
+      padding: 14px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      min-height: 420px;
+    }
+
+    .main-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .main-head h2 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--purple-2);
+    }
+    .main-head .meta {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 750;
+      line-height: 1.6;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .period-card {
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(106,62,110,0.18);
+      box-shadow: var(--shadow2);
+      overflow: hidden;
+    }
+
+    .period-head {
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: linear-gradient(90deg, rgba(106,62,110,0.10), rgba(255,255,255,0.0));
+      border-bottom: 1px solid rgba(106,62,110,0.12);
+    }
+    .period-title {
+      font-weight: 950;
+      color: var(--purple-2);
+      font-size: 13px;
+    }
+    .badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .badge {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 850;
+      color: var(--purple-2);
+      background: rgba(106,62,110,0.08);
+      border: 1px solid rgba(106,62,110,0.18);
+      white-space: nowrap;
+    }
+
+    .courses {
+      padding: 12px 14px 14px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 980px) {
+      .courses { grid-template-columns: 1fr; }
+    }
+
+    .course {
+      border-radius: 16px;
+      padding: 10px 10px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(106,62,110,0.16);
+      box-shadow: 0 8px 16px rgba(31,41,55,0.08);
+      min-height: 66px;
+    }
+    .course .code {
+      font-weight: 950;
+      color: var(--purple-2);
+      font-size: 12px;
+    }
+    .course .name {
+      margin-top: 2px;
+      color: var(--text);
+      font-weight: 750;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .course .count {
+      margin-top: 6px;
+      color: var(--muted);
+      font-weight: 850;
+      font-size: 11px;
+    }
+
+    .empty {
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px dashed rgba(106,62,110,0.35);
+      background: rgba(106,62,110,0.06);
+      color: var(--muted);
+      font-weight: 800;
+      line-height: 1.7;
+      font-size: 12px;
+    }
+
+    /* Print */
+    @media print {
+      body { background: #fff; }
+      .sidebar, .actions { display: none !important; }
+      .app { max-width: 100%; grid-template-columns: 1fr; padding: 0; }
+      .topbar { margin: 0 0 10px 0; }
+      .brand { box-shadow: none; border: 1px solid #ddd; }
+      .main { box-shadow: none; border: 1px solid #ddd; }
+      .period-card { box-shadow: none; }
+      .course { box-shadow: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <div class="topbar">
+      <div class="brand" aria-label="هوية الجهة">
+        <h1>كلية الشمال للتمريض — جدول الاختبارات النهائية للفصل الدراسي الثاني 2025-2026</h1>
+        <p class="sub">لوحة متابعة رسمية. تعمل محليًا على المتصفح. تعتمد بياناتها على ملف الجدول المعتمد (فترتان يوميًا، دون تعارض داخل الفترة).</p>
+      </div>
+      <div class="actions">
+        <button class="btn" id="btnPrint" title="طباعة/حفظ PDF">طباعة</button>
+        <button class="btn" id="btnReset" title="إعادة ضبط عوامل التصفية">إعادة ضبط</button>
+      </div>
+    </div>
+
+    <aside class="sidebar" aria-label="مرشحات وعناصر تحكم">
+      <div class="section-title">مؤشرات عامة</div>
+      <div class="kpis" id="kpis"></div>
+
+      <div class="section-title">بحث/تصفية</div>
+      <div class="filters">
+        <input class="input" id="q" type="search" placeholder="بحث برمز المقرر أو اسم المقرر…" />
+        <div class="toggle" role="tablist" aria-label="تصفية بحسب الفترة">
+          <div class="pill active" id="pillBoth" data-period="0" role="tab" aria-selected="true">كل الفترات</div>
+          <div class="pill" id="pillP1" data-period="1" role="tab" aria-selected="false">الفترة الأولى</div>
+          <div class="pill" id="pillP2" data-period="2" role="tab" aria-selected="false">الفترة الثانية</div>
+        </div>
+
+        <div class="section-title" style="margin-top: 2px;">اختيار اليوم</div>
+        <div class="day-grid" id="dayGrid"></div>
+
+        <div class="note">
+          <div style="font-weight: 950; color: var(--purple-2); margin-bottom: 6px;">ضوابط جودة (QA)</div>
+          <ul style="margin: 0; padding: 0 18px 0 0;">
+            <li>معيار التعارض: طالب واحد في مقررين داخل نفس الفترة.</li>
+            <li>لا توجد سياسة تمنع اختبارين في نفس اليوم.</li>
+            <li>الأعداد المعروضة = عدد الطلاب الفريدين لكل مقرر وفق ملف التسجيل.</li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main" aria-label="محتوى الجدول">
+      <div class="main-head">
+        <div>
+          <h2 id="viewTitle">عرض الجدول</h2>
+          <div class="meta" id="viewMeta"></div>
+        </div>
+        <div class="badges" id="activeBadges"></div>
+      </div>
+
+      <div class="cards" id="cards"></div>
+    </main>
+  </div>
+
+  <script>
+    const DATA = {"meta": {"title": "جدول الاختبارات النهائية للفصل الدراسي الثاني 2025-2026", "institution_ar": "كلية الشمال للتمريض", "days": 11, "periods": 22, "courses": 34, "max_courses_in_period": 3, "max_students_sum_in_period": 1140}, "schedule": [{"day": 1, "period1": [{"raw": "PENG008 — اللغة الانجليزية تحضيري 4 (561)", "code": "PENG008", "name": "اللغة الانجليزية تحضيري 4", "count": 561}, {"raw": "ENGL110 — مهارات الكتابة باللغة الانجليزية (200)", "code": "ENGL110", "name": "مهارات الكتابة باللغة الانجليزية", "count": 200}, {"raw": "PENG002 — اللغة الانجليزية تحضيري 2 (69)", "code": "PENG002", "name": "اللغة الانجليزية تحضيري 2", "count": 69}], "period2": [{"raw": "NURS313 — تمريض عناية بالغين متقدم نظري (671)", "code": "NURS313", "name": "تمريض عناية بالغين متقدم نظري", "count": 671}, {"raw": "PHYS121 — فيزياء طبية (469)", "code": "PHYS121", "name": "فيزياء طبية", "count": 469}]}, {"day": 2, "period1": [{"raw": "NURS331 — تمريض الامومة نظري (570)", "code": "NURS331", "name": "تمريض الامومة نظري", "count": 570}, {"raw": "NURS211 — اساسيات التمريض 1 نظري (204)", "code": "NURS211", "name": "اساسيات التمريض 1 نظري", "count": 204}], "period2": [{"raw": "PENG003 — اللغة الانجليزية تحضيري 3 (562)", "code": "PENG003", "name": "اللغة الانجليزية تحضيري 3", "count": 562}, {"raw": "NURS441 — ادارة   التمريض نظري (171)", "code": "NURS441", "name": "ادارة   التمريض نظري", "count": 171}]}, {"day": 3, "period1": [{"raw": "PBIO121 — احياء طبية (527)", "code": "PBIO121", "name": "احياء طبية", "count": 527}, {"raw": "NURS311 — تمريض عناية بالغين أساسي نظري (169)", "code": "NURS311", "name": "تمريض عناية بالغين أساسي نظري", "count": 169}], "period2": [{"raw": "PCHM121 — كيمياء طبية (474)", "code": "PCHM121", "name": "كيمياء طبية", "count": 474}, {"raw": "CHEM203 — الكيمياء الحيوية (134)", "code": "CHEM203", "name": "الكيمياء الحيوية", "count": 134}]}, {"day": 4, "period1": [{"raw": "NURS421 — تمريض صحة المجتمع نظري (326)", "code": "NURS421", "name": "تمريض صحة المجتمع نظري", "count": 326}, {"raw": "ARAB101 — مهارات اللغة العربية (183)", "code": "ARAB101", "name": "مهارات اللغة العربية", "count": 183}], "period2": [{"raw": "NURS213 — اساسيات التمريض 2 نظري (277)", "code": "NURS213", "name": "اساسيات التمريض 2 نظري", "count": 277}, {"raw": "NURS321 — تمريض الصحة العقلية نظري (167)", "code": "NURS321", "name": "تمريض الصحة العقلية نظري", "count": 167}]}, {"day": 5, "period1": [{"raw": "NURS431 — تمريض الأطفال نظري (295)", "code": "NURS431", "name": "تمريض الأطفال نظري", "count": 295}, {"raw": "PCSK001 — مهارات الاتصال (112)", "code": "PCSK001", "name": "مهارات الاتصال", "count": 112}], "period2": [{"raw": "PAT213 — علم الامراض (207)", "code": "PAT213", "name": "علم الامراض", "count": 207}, {"raw": "PHYL281 — علم وظائف الاعضاء (194)", "code": "PHYL281", "name": "علم وظائف الاعضاء", "count": 194}]}, {"day": 6, "period1": [{"raw": "ANT205 — علم التشريح (236)", "code": "ANT205", "name": "علم التشريح", "count": 236}, {"raw": "PCOS001 — مهارات الحاسب (69)", "code": "PCOS001", "name": "مهارات الحاسب", "count": 69}], "period2": [{"raw": "MGT181 — إدارة الجودة الشاملة (159)", "code": "MGT181", "name": "إدارة الجودة الشاملة", "count": 159}, {"raw": "PENG001 — اللغة الانجليزية تحضيري 1 (59)", "code": "PENG001", "name": "اللغة الانجليزية تحضيري 1", "count": 59}]}, {"day": 7, "period1": [{"raw": "NURS443 — مبادئ البحث العلمي في التمريض (520)", "code": "NURS443", "name": "مبادئ البحث العلمي في التمريض", "count": 520}], "period2": [{"raw": "PHRM304 — علم الادوية 2 (413)", "code": "PHRM304", "name": "علم الادوية 2", "count": 413}]}, {"day": 8, "period1": [{"raw": "NURS411 — تمريض الحالات الحرجة نظري (399)", "code": "NURS411", "name": "تمريض الحالات الحرجة نظري", "count": 399}], "period2": [{"raw": "ARAB102 — التحرير العربي (269)", "code": "ARAB102", "name": "التحرير العربي", "count": 269}]}, {"day": 9, "period1": [{"raw": "IC101 — مدخل الى الثقافة الاسلامية (257)", "code": "IC101", "name": "مدخل الى الثقافة الاسلامية", "count": 257}], "period2": [{"raw": "PHRM214 — علم الادوية 1 (198)", "code": "PHRM214", "name": "علم الادوية 1", "count": 198}]}, {"day": 10, "period1": [{"raw": "IC102 — الاسلام وبناء المجتمع (179)", "code": "IC102", "name": "الاسلام وبناء المجتمع", "count": 179}], "period2": [{"raw": "BIOL281 — علم الأحياء الدقيقه (143)", "code": "BIOL281", "name": "علم الأحياء الدقيقه", "count": 143}]}, {"day": 11, "period1": [{"raw": "PMDC101 — مبادى الكليات الصحية (100)", "code": "PMDC101", "name": "مبادى الكليات الصحية", "count": 100}], "period2": []}]};
+
+    const state = {
+      day: 0,        // 0 = all
+      period: 0,     // 0 = both, 1 = period1, 2 = period2
+      q: ""
+    };
+
+    const el = (id) => document.getElementById(id);
+
+    function fmtNum(n) {
+      try { return new Intl.NumberFormat('ar-SA').format(n); }
+      catch (_) { return String(n); }
+    }
+
+    function kpi(label, value) {
+      return `
+        <div class="kpi">
+          <div class="v">${fmtNum(value)}</div>
+          <div class="l">${label}</div>
+        </div>
+      `;
+    }
+
+    function badge(text) {
+      return `<span class="badge">${text}</span>`;
+    }
+
+    function courseCard(c) {
+      const count = (c.count === null || c.count === undefined) ? "—" : fmtNum(c.count);
+      const name = c.name ? c.name : "";
+      return `
+        <div class="course">
+          <div class="code">${escapeHtml(c.code)}</div>
+          <div class="name">${escapeHtml(name)}</div>
+          <div class="count">عدد الطلاب: ${count}</div>
+        </div>
+      `;
+    }
+
+    function escapeHtml(s) {
+      if (s === null || s === undefined) return "";
+      return String(s)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function periodTitle(day, period) {
+      return `اليوم ${day} — الفترة ${period === 1 ? "الأولى" : "الثانية"}`;
+    }
+
+    function filterCourses(courses) {
+      if (!state.q) return courses;
+      const q = state.q.trim().toLowerCase();
+      return courses.filter(c => {
+        const hay = `${c.code} ${c.name || ""}`.toLowerCase();
+        return hay.includes(q);
+      });
+    }
+
+    function renderKpis() {
+      const m = DATA.meta;
+      el("kpis").innerHTML = [
+        kpi("عدد الأيام", m.days),
+        kpi("عدد الفترات", m.periods),
+        kpi("عدد المقررات", m.courses),
+        kpi("أعلى مجموع مسجلين في فترة", m.max_students_sum_in_period),
+      ].join("");
+    }
+
+    function renderDayGrid() {
+      const days = DATA.meta.days;
+      const items = [];
+      items.push(`<button class="day-btn ${state.day===0?'active':''}" data-day="0">الكل</button>`);
+      for (let d=1; d<=days; d++) {
+        items.push(`<button class="day-btn ${state.day===d?'active':''}" data-day="${d}">${d}</button>`);
+      }
+      el("dayGrid").innerHTML = items.join("");
+
+      el("dayGrid").querySelectorAll(".day-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.day = Number(btn.dataset.day);
+          renderDayGrid();
+          renderMain();
+        });
+      });
+    }
+
+    function setPillActive(period) {
+      state.period = period;
+      const pills = [el("pillBoth"), el("pillP1"), el("pillP2")];
+      pills.forEach(p => p.classList.remove("active"));
+      pills.forEach(p => p.setAttribute("aria-selected", "false"));
+
+      const chosen = period === 0 ? el("pillBoth") : (period === 1 ? el("pillP1") : el("pillP2"));
+      chosen.classList.add("active");
+      chosen.setAttribute("aria-selected", "true");
+    }
+
+    function renderBadges() {
+      const b = [];
+      if (state.day === 0) b.push(badge("نطاق: جميع الأيام"));
+      else b.push(badge(`نطاق: اليوم ${state.day}`));
+
+      if (state.period === 0) b.push(badge("الفترة: كل الفترات"));
+      if (state.period === 1) b.push(badge("الفترة: الأولى"));
+      if (state.period === 2) b.push(badge("الفترة: الثانية"));
+
+      if (state.q) b.push(badge(`بحث: ${escapeHtml(state.q)}`));
+
+      el("activeBadges").innerHTML = b.join("");
+    }
+
+    function renderMain() {
+      const days = DATA.meta.days;
+
+      // Title/meta
+      const scope = state.day === 0 ? `جميع الأيام (1–${days})` : `اليوم ${state.day}`;
+      const per = state.period === 0 ? "كل الفترات" : (state.period === 1 ? "الفترة الأولى" : "الفترة الثانية");
+      el("viewTitle").textContent = "عرض الجدول";
+      el("viewMeta").innerHTML = `النطاق: <b>${scope}</b> — التصفية بحسب: <b>${per}</b>${state.q ? ` — عبارة البحث: <b>${escapeHtml(state.q)}</b>` : ""}`;
+      renderBadges();
+
+      // Build cards
+      const cards = [];
+      const sched = DATA.schedule.slice().sort((a,b) => a.day - b.day);
+
+      for (const dayItem of sched) {
+        if (state.day !== 0 && dayItem.day !== state.day) continue;
+
+        const day = dayItem.day;
+
+        const periodsToShow = [];
+        if (state.period === 0 || state.period === 1) periodsToShow.push({k:"period1", p:1, list: dayItem.period1});
+        if (state.period === 0 || state.period === 2) periodsToShow.push({k:"period2", p:2, list: dayItem.period2});
+
+        for (const p of periodsToShow) {
+          const filtered = filterCourses(p.list);
+          if (state.q && filtered.length === 0) continue;
+
+          const studentsSum = filtered.reduce((acc, c) => acc + (c.count || 0), 0);
+
+          const body = filtered.length
+            ? `<div class="courses">${filtered.map(courseCard).join("")}</div>`
+            : `<div class="empty">لا توجد مقررات مطابقة ضمن نطاق التصفية الحالي.</div>`;
+
+          cards.push(`
+            <section class="period-card">
+              <div class="period-head">
+                <div class="period-title">${periodTitle(day, p.p)}</div>
+                <div class="badges">
+                  <span class="badge">عدد المقررات: ${fmtNum(filtered.length)}</span>
+                  <span class="badge">مجموع المسجلين: ${fmtNum(studentsSum)}</span>
+                </div>
+              </div>
+              ${body}
+            </section>
+          `);
+        }
+      }
+
+      el("cards").innerHTML = cards.length
+        ? cards.join("")
+        : `<div class="empty">
+             لا توجد نتائج ضمن نطاق التصفية المحدد. يُرجى تعديل اليوم/الفترة أو عبارة البحث.
+           </div>`;
+    }
+
+    // Wire events
+    el("q").addEventListener("input", (e) => {
+      state.q = e.target.value || "";
+      renderMain();
+    });
+
+    [el("pillBoth"), el("pillP1"), el("pillP2")].forEach(pill => {
+      pill.addEventListener("click", () => {
+        setPillActive(Number(pill.dataset.period));
+        renderMain();
+      });
+    });
+
+    el("btnReset").addEventListener("click", () => {
+      state.day = 0;
+      setPillActive(0);
+      state.q = "";
+      el("q").value = "";
+      renderDayGrid();
+      renderMain();
+    });
+
+    el("btnPrint").addEventListener("click", () => window.print());
+
+    // Initial render
+    renderKpis();
+    renderDayGrid();
+    renderMain();
+  </script>
+</body>
+</html>
