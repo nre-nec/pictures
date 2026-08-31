@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="السيرة البحثية · Folio للأستاذ الدكتور رفعت إسماعيل السوداني، أستاذ البلاغة والنقد المتفرغ، كلية اللغة العربية - إيتاي البارود - قسم البلاغة والنقد."
+    />
+    <title>السيرة البحثية · Folio</title>
+    <style>
+      :root {
+        --bg: #f4efe7;
+        --surface: rgba(255, 255, 255, 0.72);
+        --surface-strong: #fffdf9;
+        --card: rgba(255, 255, 255, 0.8);
+        --card-2: #f8f3eb;
+        --primary: #1f2b3a;
+        --primary-2: #2d435d;
+        --accent: #b48b5b;
+        --accent-soft: rgba(180, 139, 91, 0.12);
+        --text: #1d1d1d;
+        --muted: #5d5d5d;
+        --line: rgba(31, 43, 58, 0.12);
+        --shadow: 0 18px 40px rgba(18, 28, 39, 0.12);
+        --success: #1b5e59;
+      }
+
+      body.dark-mode {
+        --bg: #101821;
+        --surface: rgba(20, 30, 39, 0.72);
+        --surface-strong: #14212d;
+        --card: rgba(18, 28, 38, 0.84);
+        --card-2: #1a2a36;
+        --primary: #e7ddd0;
+        --primary-2: #d2b79f;
+        --accent: #d3a76d;
+        --accent-soft: rgba(211, 167, 109, 0.12);
+        --text: #edf3f7;
+        --muted: #b5c0c8;
+        --line: rgba(219, 223, 230, 0.12);
+        --shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+        --success: #9ad0c6;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Tahoma", "Segoe UI", "Arial", sans-serif;
+        background:
+          radial-gradient(circle at top, rgba(180, 139, 91, 0.1), transparent 30%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.8;
+        transition: background 0.25s ease, color 0.25s ease;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(180, 139, 91, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(180, 139, 91, 0.02) 1px, transparent 1px);
+        background-size: 28px 28px;
+        pointer-events: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+        background: rgba(244, 239, 231, 0.75);
+        border-bottom: 1px solid var(--line);
+        transition: background 0.25s ease;
+      }
+
+      body.dark-mode .site-header {
+        background: rgba(16, 24, 33, 0.75);
+      }
+
+      .nav-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        min-height: 76px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 1.15rem;
+        letter-spacing: 0.02em;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: #fff;
+        font-size: 1.1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a,
+      .toolbar button,
+      .filter-button,
+      .card-button,
+      .modal-close,
+      .to-top {
+        transition: all 0.2s ease;
+      }
+
+      .nav-links a {
+        padding: 10px 12px;
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible {
+        background: var(--accent-soft);
+        color: var(--primary);
+        outline: none;
+      }
+
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .toolbar button,
+      .to-top {
+        border: 1px solid var(--line);
+        background: var(--surface-strong);
+        color: var(--text);
+        border-radius: 999px;
+        cursor: pointer;
+      }
+
+      .toolbar button {
+        padding: 10px 14px;
+        font-size: 0.95rem;
+      }
+
+      .toolbar button:hover,
+      .toolbar button:focus-visible,
+      .to-top:hover,
+      .to-top:focus-visible {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow);
+        outline: none;
+      }
+
+      main {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero {
+        padding: 80px 0 50px;
+      }
+
+      .hero-shell {
+        display: grid;
+        grid-template-columns: 1.45fr 0.95fr;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--accent-soft);
+        border: 1px solid rgba(180, 139, 91, 0.18);
+        color: var(--accent);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+
+      .hero h1 {
+        margin: 18px 0 16px;
+        font-family: "Georgia", "Times New Roman", serif;
+        font-size: clamp(2.2rem, 5vw, 4.3rem);
+        line-height: 1.2;
+        color: var(--primary);
+      }
+
+      .hero h2 {
+        margin: 0 0 14px;
+        font-size: clamp(1.3rem, 2.5vw, 2rem);
+        color: var(--primary-2);
+        font-weight: 700;
+      }
+
+      .lead {
+        width: min(640px, 100%);
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .primary-btn,
+      .secondary-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 0 22px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .primary-btn {
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        color: #fff;
+      }
+
+      .secondary-btn {
+        background: transparent;
+        border-color: var(--line);
+        color: var(--text);
+      }
+
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(120px, 1fr));
+        gap: 14px;
+        margin-top: 34px;
+      }
+
+      .stat-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 18px 16px;
+        min-height: 130px;
+      }
+
+      .stat-value {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1.2;
+      }
+
+      .stat-label {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .profile-card {
+        padding: 26px 26px 18px;
+        border-radius: 28px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255,255,255,0.06));
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .profile-card::before {
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        inset: -30px auto auto -30px;
+        background: rgba(180, 139, 91, 0.08);
+        border-radius: 50%;
+      }
+
+      .profile-orb {
+        position: relative;
+        width: 100%;
+        min-height: 320px;
+        border-radius: 24px;
+        background:
+          linear-gradient(135deg, rgba(31, 43, 58, 0.95), rgba(180, 139, 91, 0.55)),
+          linear-gradient(180deg, #d8cab9, #bca38c);
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .profile-orb::before {
+        content: "";
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .profile-orb::after {
+        content: "البلاغة والنقد";
+        position: absolute;
+        left: 50%;
+        top: 48%;
+        transform: translate(-50%, -50%);
+        color: rgba(255,255,255,0.85);
+        font-size: 1.2rem;
+        letter-spacing: 0.06em;
+      }
+
+      .profile-shadow {
+        position: absolute;
+        bottom: 0;
+        width: 72%;
+        height: 46%;
+        border-radius: 50% 50% 0 0;
+        background: rgba(17, 24, 31, 0.18);
+        filter: blur(10px);
+      }
+
+      .profile-caption {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 18px;
+        gap: 12px;
+      }
+
+      .profile-caption strong {
+        display: block;
+        font-size: 1rem;
+        color: var(--primary);
+      }
+
+      .profile-caption span {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .mini-tag {
+        display: inline-block;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 0.8rem;
+      }
+
+      section {
+        padding: 42px 0;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .section-head h3 {
+        margin: 0;
+        font-family: "Georgia", "Times New Roman", serif;
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+        color: var(--primary);
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .about-panel {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        padding: clamp(22px, 5vw, 36px);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 28px;
+        align-items: start;
+      }
+
+      .about-panel p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .about-quote {
+        padding: 24px 20px;
+        border-right: 4px solid var(--accent);
+        background: rgba(180, 139, 91, 0.06);
+        border-radius: 18px;
+        color: var(--primary);
+        font-family: "Georgia", "Times New Roman", serif;
+        font-size: 1.1rem;
+      }
+
+      .about-quote strong {
+        display: block;
+        margin-top: 10px;
+        color: var(--accent);
+        font-size: 0.95rem;
+      }
+
+      .filter-panel {
+        display: grid;
+        grid-template-columns: 1.5fr 0.7fr auto;
+        gap: 16px;
+        align-items: center;
+        margin-top: 24px;
+      }
+
+      .switcher {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .filter-button {
+        padding: 10px 16px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--surface-strong);
+        color: var(--muted);
+        cursor: pointer;
+        font-size: 0.92rem;
+      }
+
+      .filter-button.active {
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        border-color: transparent;
+        color: white;
+      }
+
+      .search-box {
+        position: relative;
+      }
+
+      .search-box input {
+        width: 100%;
+        min-height: 48px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: var(--surface-strong);
+        color: var(--text);
+        padding: 0 48px 0 16px;
+        font-size: 0.96rem;
+      }
+
+      .search-box input:focus {
+        outline: 2px solid rgba(180, 139, 91, 0.24);
+        border-color: rgba(180, 139, 91, 0.3);
+      }
+
+      .search-box span {
+        position: absolute;
+        inset-inline-end: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .sort-box {
+        min-width: 180px;
+      }
+
+      .sort-box select {
+        width: 100%;
+        min-height: 48px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: var(--surface-strong);
+        color: var(--text);
+        padding: 0 14px;
+        font-size: 0.96rem;
+      }
+
+      .result-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-top: 16px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .results-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+        margin-top: 24px;
+      }
+
+      .research-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      }
+
+      .research-card:hover,
+      .research-card:focus-visible {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 42px rgba(18, 28, 39, 0.18);
+        border-color: rgba(180, 139, 91, 0.22);
+        outline: none;
+      }
+
+      .card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 18px 12px;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .card-number {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: rgba(180, 139, 91, 0.08);
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .card-body {
+        padding: 0 18px 18px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(31, 43, 58, 0.06);
+        color: var(--primary);
+        font-size: 0.74rem;
+        margin-bottom: 12px;
+      }
+
+      body.dark-mode .tag {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .research-card h4 {
+        margin: 0 0 14px;
+        font-family: "Georgia", "Times New Roman", serif;
+        font-size: 1.3rem;
+        line-height: 1.6;
+        color: var(--primary);
+      }
+
+      .research-card p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .card-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 16px;
+        border-radius: 999px;
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--primary);
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .card-button:hover,
+      .card-button:focus-visible {
+        background: var(--accent-soft);
+        border-color: transparent;
+        outline: none;
+      }
+
+      .research-areas {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .area-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 24px 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .area-icon {
+        width: 56px;
+        height: 56px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+      }
+
+      .area-card h4 {
+        margin: 0 0 10px;
+        color: var(--primary);
+        font-size: 1.08rem;
+      }
+
+      .area-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(12, 18, 25, 0.65);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        z-index: 1000;
+      }
+
+      .modal.open {
+        display: flex;
+      }
+
+      .modal-panel {
+        width: min(720px, 100%);
+        max-height: min(86vh, 820px);
+        overflow: auto;
+        background: var(--surface-strong);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+        padding: 26px 24px 22px;
+      }
+
+      .modal-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      .modal-head h4 {
+        margin: 0;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-family: "Georgia", "Times New Roman", serif;
+        color: var(--primary);
+        line-height: 1.4;
+      }
+
+      .modal-close {
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--text);
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+
+      .modal-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .modal-body p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .modal-body strong {
+        color: var(--primary);
+      }
+
+      .to-top {
+        position: fixed;
+        left: 20px;
+        bottom: 22px;
+        width: 52px;
+        height: 52px;
+        z-index: 200;
+        display: grid;
+        place-items: center;
+        font-size: 1.2rem;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      @media (max-width: 980px) {
+        .hero-shell,
+        .about-grid,
+        .filter-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .results-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .research-areas {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .stat-grid {
+          grid-template-columns: repeat(3, minmax(120px, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          width: min(100% - 20px, 1180px);
+        }
+
+        .site-header {
+          position: sticky;
+        }
+
+        .nav-wrap {
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: center;
+          gap: 10px;
+          padding: 12px 0;
+        }
+
+        .brand {
+          justify-content: center;
+          font-size: 1rem;
+        }
+
+        .nav-links {
+          justify-content: center;
+          gap: 8px;
+        }
+
+        .nav-links a {
+          padding: 8px 10px;
+          font-size: 0.82rem;
+        }
+
+        .toolbar {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .toolbar button {
+          width: 100%;
+          min-height: 46px;
+        }
+
+        .hero {
+          padding-top: 48px;
+          padding-bottom: 32px;
+        }
+
+        .hero-shell {
+          gap: 20px;
+        }
+
+        .hero h1 {
+          font-size: clamp(2rem, 9vw, 3rem);
+        }
+
+        .hero h2 {
+          font-size: 1.3rem;
+        }
+
+        .lead {
+          font-size: 0.98rem;
+        }
+
+        .hero-actions {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+          width: 100%;
+          min-height: 48px;
+        }
+
+        .stat-grid,
+        .results-grid,
+        .research-areas {
+          grid-template-columns: 1fr;
+        }
+
+        .stat-card {
+          min-height: unset;
+          padding: 16px 14px;
+        }
+
+        .profile-card {
+          padding: 18px 18px 14px;
+        }
+
+        .profile-orb {
+          min-height: 240px;
+        }
+
+        .profile-caption {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .section-head {
+          align-items: start;
+          flex-direction: column;
+        }
+
+        .filter-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .switcher {
+          gap: 8px;
+        }
+
+        .filter-button {
+          flex: 1 1 calc(50% - 8px);
+          min-height: 42px;
+          text-align: center;
+        }
+
+        .search-box input,
+        .sort-box select {
+          min-height: 46px;
+        }
+
+        .result-meta {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .research-card h4 {
+          font-size: 1.15rem;
+        }
+
+        .card-button {
+          width: 100%;
+          min-height: 46px;
+        }
+
+        .modal-panel {
+          padding: 20px 16px 18px;
+          border-radius: 18px;
+        }
+
+        .modal-head {
+          align-items: center;
+        }
+
+        .modal-close {
+          width: 40px;
+          height: 40px;
+        }
+
+        .to-top {
+          width: 48px;
+          height: 48px;
+          left: 12px;
+          bottom: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <div class="brand" aria-label="الهوية البصرية للموقع">
+          <div class="brand-mark">س</div>
+          <span>السيرة البحثية · Folio</span>
+        </div>
+
+        <nav class="nav-links" aria-label="التنقل بين الأقسام">
+          <a href="#about">عن السيرة</a>
+          <a href="#works">الإنتاج العلمي</a>
+          <a href="#areas">المجالات</a>
+        </nav>
+
+        <div class="toolbar">
+          <button id="themeToggle" type="button" aria-label="تبديل الوضع الليلي">الوضع الليلي</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="container hero-shell">
+          <div>
+            <div class="eyebrow">السيرة البحثية · Folio</div>
+            <h1>السيرة البحثية · Folio</h1>
+            <h2>الأستاذ الدكتور رفعت إسماعيل السوداني</h2>
+            <p class="lead" style="margin-top: 0; margin-bottom: 0;">
+              أستاذ البلاغة والنقد المتفرغ<br />
+              كلية اللغة العربية - إيتاي البارود - قسم البلاغة والنقد
+            </p>
+            <p class="lead" style="margin-top: 18px;">
+              مجال بحثي يستند إلى القراءة النقدية، وتحليل النظم، ودراسة الإعجاز والبيان، مع اهتمامٍ مستمر بالمنهجية
+              والتحليل اللغوي والبلاغي.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#works" class="primary-btn">استعراض الإنتاج</a>
+              <a href="#about" class="secondary-btn">عن السيرة</a>
+            </div>
+
+            <div class="stat-grid" id="statsGrid" aria-live="polite"></div>
+          </div>
+
+          <aside class="profile-card" aria-label="بطاقة شخصية أكاديمية">
+            <div class="profile-orb" aria-hidden="true">
+              <div class="profile-shadow"></div>
+            </div>
+            <div class="profile-caption">
+              <div>
+                <strong>الأستاذ الدكتور رفعت إسماعيل السوداني</strong>
+                <span>أستاذ البلاغة والنقد المتفرغ</span>
+                <span>كلية اللغة العربية - إيتاي البارود - قسم البلاغة والنقد</span>
+              </div>
+              <span class="mini-tag">بحثي</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-head">
+            <h3>عن السيرة البحثية</h3>
+          </div>
+
+          <div class="about-panel">
+            <div class="about-grid">
+              <div>
+                <p>
+                  Folio — بوابة رقمية لاستعراض المسيرة العلمية والإنتاج البحثي في البلاغة والنقد.
+                </p>
+                <p>
+                  هذه الصفحة لا تقدم سيرة ذاتية تقليدية، بل واجهة رقمية تبرز المسار البحثي، وأعماله الأكاديمية، ومجالات
+                  اهتمامه في البلاغة العربية، والنظم القرآني، والبيان، والإعجاز، واللغة والتحرير، مع إسهاماته في قراءة
+                  النصوص العربية قراءة تحليلية نقدية وثيقة بالمنهج النقدي المعاصر.
+                </p>
+                <p>
+                  يعكس هذا الواجهة تنظيم الإنتاج العلمي في بطاقات قابلة للتمرير والبحث والفحص، مع الحفاظ على هوية أكاديمية
+                  متوازنة تجمع بين الطابع العلمي والروح المخطوطة العربية الحديثة.
+                </p>
+              </div>
+
+              <div class="about-quote">
+                “البلاغة ليست مجرد estética اللفظ، بل مناهج في فهم النص، وتحليل الدلالة، واستجلاء المعنى داخل سياق
+                التراكيب والظلال البلاغية.”
+                <strong>— رؤية البحث</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="works">
+        <div class="container">
+          <div class="section-head">
+            <h3>الإنتاج العلمي والبحثي</h3>
+            <p>تنظيم أبحاثه وفق الموضوع والبحث والقراءة النقدية.</p>
+          </div>
+
+          <div class="filter-panel">
+            <div class="switcher" id="filterTabs" aria-label="تصفية الأبحاث"></div>
+
+            <div class="search-box">
+              <label class="sr-only" for="searchInput">البحث في الأبحاث</label>
+              <input id="searchInput" type="search" placeholder="ابحث في عنوان البحث..." aria-label="بحث في عناوين الأبحاث" />
+              <span>⌕</span>
+            </div>
+
+            <div class="sort-box">
+              <label class="sr-only" for="sortSelect">ترتيب النتائج</label>
+              <select id="sortSelect" aria-label="ترتيب النتائج">
+                <option value="alpha">ترتيب أبجدي</option>
+                <option value="category">ترتيب حسب التصنيف</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="result-meta">
+            <span id="resultCount">0 نتيجة</span>
+            <span>النتائج المحدثة لحظياً</span>
+          </div>
+
+          <div class="results-grid" id="researchGrid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="areas">
+        <div class="container">
+          <div class="section-head">
+            <h3>مجالات الاهتمام البحثي</h3>
+          </div>
+
+          <div class="research-areas" id="areasGrid"></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal" id="researchModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-panel">
+        <div class="modal-head">
+          <h4 id="modalTitle">عنوان البحث</h4>
+          <button class="modal-close" type="button" aria-label="إغلاق النافذة">×</button>
+        </div>
+
+        <div class="modal-meta">
+          <span class="pill" id="modalCategory">التصنيف</span>
+          <span class="pill" id="modalType">نوع العمل</span>
+        </div>
+
+        <div class="modal-body" id="modalBody"></div>
+      </div>
+    </div>
+
+    <button class="to-top" type="button" aria-label="العودة إلى أعلى الصفحة">↑</button>
+
+    <script>
+      const researchWorks = [
+        { id: 1, title: 'التلاؤم عند الرماني – قراءة ثانية', category: 'بلاغة ونقد', type: 'بحث', description: 'قراءة نقدية ثانية في مفهوم التلاؤم عند الرماني، مع إبراز أبعاده البيانية والتأويلية.', details: 'تتناول هذه الدراسة قراءة جديدة في مفهوم التلاؤم عند الرماني، من خلال تتبع آثاره في بناء المعنى البلاغي، واستجلاء العلاقة بين النظم والمعنى، مع ملاحظة تطبيقية لأثره في النقد البلاغي.' },
+        { id: 2, title: 'آيات وبالوالدين إحسانا', category: 'الدراسات القرآنية', type: 'بحث', description: 'تحليل بلاغي ودلالي لآيات بر الوالدين في القرآن الكريم.', details: 'يُعنى هذا البحث بدراسة آيات الوالدين في القرآن، ويقف عند دلالاتها الوجدانية والبلاغية، ويكشف عن أساليب الإقناع والوعظ والرحمة في خطاب الوالدين.' },
+        { id: 3, title: 'قضايا بلاغية – دراسة تحليلية تطبيقية', category: 'بلاغة ونقد', type: 'بحث', description: 'دراسة تطبيقية في القضايا البلاغية وتحليلها في النصوص العربية.', details: 'تقدّم هذه الدراسة قراءات تحليلية في القضايا البلاغية المتصلة بالمقاصد، والألفاظ، والتراكيب، موازنة بين النظرية والتطبيق في النص العربي.' },
+        { id: 4, title: 'مقامات الاسم الجليل العفو القرآنية – تأمل بلاغي', category: 'الدراسات القرآنية', type: 'بحث', description: 'تأمل بلاغي في مقام الاسم الجليل العفو في القرآن الكريم.', details: 'يبحث في مواضع اسم الله تعالى “العفو” ونظامه الدلالي في النص القرآني، وكذلك في أثر هذا الاسم في بناء المعنى الأخلاقي والبلاغي.' },
+        { id: 5, title: 'من أسرار النظم القرآني في تشبيه المشرك بالله تعالى', category: 'الدراسات القرآنية', type: 'بحث', description: 'نظم قرآني في تشبيه المشرك بالله، وبيان أغراضه وأثره البلاغي.', details: 'يتناول البحث أسرار النظم في تشبيه المشرك بالله تعالى، موضحاً كيف تستقيم الدلالة في النص وتؤدي إلى توضيح المعنى العقيدي والبلاغي.' },
+        { id: 6, title: 'مهارات التحرير الكتابي', category: 'اللغة والتحرير', type: 'بحث', description: 'دراسة في مهارات التحرير الكتابي وخصائصه الفنية والأسلوبية.', details: 'يُسلّط هذا البحث الضوء على مهارات التحرير الكتابي في ضبط العبارة، وبناء الفكرة، وتنظيم المعنى، مع إشارة إلى أثر الدقة اللغوية في جودة النظم.' },
+        { id: 7, title: 'البيان عند الرماني في نكته', category: 'البيان والإعجاز', type: 'بحث', description: 'دراسة البيان في نكته الرمانية، مع رصد الجوانب الدلالية واللفظية.', details: 'يتتبع البحث مفهوم البيان عند الرماني، ويقف على نماذج من نكته في مواضع التراكيب والوضع اللغوي، مع تأكيد على دور البيان في توضيح المعنى.' },
+        { id: 8, title: 'الاستعارة عند الرماني في نكته – تحليلاً وتعليقاً', category: 'البيان والإعجاز', type: 'بحث', description: 'تحليل الاستعارة في نكته الرمانية، مع تعليق على أساليبها وأثرها في الدلالة.', details: 'يدرس هذا البحث الاستعارة عند الرماني، موضحاً بنيتها، وأثرها في تخصيص المعنى، مع تحليل تطبيقات نكته في مقام التصوير والبيان.' },
+        { id: 9, title: 'آيات نزغ الشيطان القرآنية – مواقعها وصياغاتها بلاغياً', category: 'الدراسات القرآنية', type: 'بحث', description: 'دراسة مواقع آيات نزغ الشيطان وبلاغتها في النص القرآني.', details: 'يتناول البحث آيات نزغ الشيطان من حيث مواقعها في السور، ووظيفة البيان، وصياغاتها التي تبرز أثر التكرار، والنسق، والخيال البلاغي.' },
+        { id: 10, title: 'قصيدة ليس الجمال بمئزر', category: 'الشعر', type: 'بحث', description: 'قراءة شعرية في قصيدة ليس الجمال بمئزر، من جهة الدلالة والمعنى.', details: 'يركز البحث على الدلالة الشعرية في القصيدة، ويقف على التراكيب الفنية والرموز البلاغية، من خلال تحليل فحوى المعنى وتأثيره التعبيري.' },
+        { id: 11, title: 'معالم على طريق البحث في التفكير البلاغي', category: 'بلاغة ونقد', type: 'بحث', description: 'مسار في التفكير البلاغي، مع تناول مناهجه ومقاصده.', details: 'يستعرض هذا البحث معالم المنهج البلاغي وطرائقه، مع إشارة إلى القضايا الفكرية والبحثية التي تشكل مسار النقد البلاغي في العربية.' },
+        { id: 12, title: 'من أسرار النظم القرآني في مواقع قصر صفة الألوهية على لفظ الجلالة الله', category: 'الدراسات القرآنية', type: 'بحث', description: 'دراسة النظم القرآني في مواضع قصر صفة الألوهية على لفظ الجلالة الله.', details: 'يتتبع هذا البحث التراكيبات القرآنية التي قُصِر فيها معنى الألوهية على لفظ الجلالة، ويكشف عن أسرار النظم في ترسيخ الدلالة والهوية العقائدية.' },
+        { id: 13, title: 'من صور إعجاز الإيجاز القرآني – آيات إنا لله وإنا إليه راجعون', category: 'البيان والإعجاز', type: 'بحث', description: 'إعجاز الإيجاز في آيات الرجوع إلى الله، مع بيان صور البيان.', details: 'تتبع البحث صور الإيجاز في آيات الإخبار والرجوع إلى الله، موضحة كيف تنجز اللغة القرآنية التلفظ بالدلالة في إيجاز وعمق.' },
+        { id: 14, title: 'آيات الإخبات – سياقات قرآنية ولطائف بيانية', category: 'الدراسات القرآنية', type: 'بحث', description: 'دراسة آيات الإخبات في سياقاتها القرآنية وملامحها البيانية.', details: 'يُعنى البحث بالآيات المتعلّقة بالإخبات، فيقف على سياقاتها التقريرية، ودلالة النداء، واللطائف البيانية التي تبرز أثر الخشوع في النص.' },
+        { id: 15, title: 'تصور عن ضوابط البحث البلاغي', category: 'بلاغة ونقد', type: 'بحث', description: 'وجهة نظر في ضوابط البحث البلاغي ومنهجيته.', details: 'يطرح هذا البحث تصوراً في ضوابط النقد البلاغي، ويستعرض وسائل التوثيق، ومعايير التحليل، وقيود المنهج في دراسة المعنى واللغة.' },
+        { id: 16, title: 'من أسرار البيان النبوي في حديث الولي', category: 'البلاغة النبوية', type: 'بحث', description: 'استجلاء أسرار البيان النبوي في حديث الولي.', details: 'يتناول البحث بيان النبي صلى الله عليه وسلم في حديث الولي، ويرصد صيغ التوظيف البلاغي، ومعاني الإيجاز، واللطائف الدلالية.' },
+        { id: 17, title: 'من البلاغة النبوية في الذكر قبل النوم', category: 'البلاغة النبوية', type: 'بحث', description: 'تحليل بلاغي لسنن الذكر قبل النوم في الحديث النبوي.', details: 'يبحث في البلاغة النبوية في الذكر قبل النوم، ويقف على أسلوب التوجيه، والوقع النفسي، وكأنوثة الخطاب في صياغة العبادة.' },
+        { id: 18, title: 'أحاديث التشبيه في الصفات الحسنى... في كتاب تأويل مختلف الأحاديث', category: 'البلاغة النبوية', type: 'بحث', description: 'دراسة أحاديث التشبيه في الصفات الحسنى في كتاب تأويل مختلف الأحاديث.', details: 'تتبع هذا البحث نصوص التشبيه المتعلقة بالصفات الحسنى في كتاب تأويل مختلف الأحاديث، وتُبين بلاغته وأساليب التفسير والبيان.' },
+        { id: 19, title: 'بلاغة مفتتح خطبة المختصر للسعد', category: 'بلاغة ونقد', type: 'بحث', description: 'قراءة بلاغية في مفتتح خطبة المختصر للسعد.', details: 'يتوقف البحث عند افتتاحية خطبة المختصر، ويحلّل الأساليب الإنشائية والدلالية في توجيه الكلام، وبيان أثرهما في الأسلوب البلاغي.' },
+        { id: 20, title: 'قطوف من شرح السيد الشريف مفتتح خطبة الكشاف', category: 'بلاغة ونقد', type: 'بحث', description: 'ملاحظات بلاغية في شرح السيد الشريف لمفتتح خطبة الكشاف.', details: 'يُبدي البحث قراءة في شرح السيد الشريف، ويستقصي من خلاله إضاءات البلاغة والتفسير في افتتاحية خطبة الكشاف.' },
+        { id: 21, title: 'من أسرار البيان النبوي في الحديث عن الصدق', category: 'البلاغة النبوية', type: 'بحث', description: 'استكشاف أسرار البيان النبوي في الحديث عن الصدق.', details: 'يستكشف البحث طاقات البيان النبوي في الحديث عن الصدق، ويبين كيف يرتبط المعنى الأخلاقي بالأسلوب البلاغي في التوجيه الخلقي.' },
+        { id: 22, title: 'من أسرار النظم القرآني في خطاب الهدهد لسيدنا سليمان', category: 'الدراسات القرآنية', type: 'بحث', description: 'دراسة النظم في خطاب الهدهد، في ضوء البلاغة القرآنية.', details: 'يقرأ هذا البحث خطاب الهدهد في سياق النظم القرآني، ويكشف عن ربط اللغة بالمعنى، ومواضع الإعجاز في توجيه الخطاب.' },
+        { id: 23, title: 'من أسرار النظم القرآني في آيات الكبر', category: 'الدراسات القرآنية', type: 'بحث', description: 'تأمل في أسرار النظم القرآني في آيات الكبر.', details: 'يبحث في آيات الكبر من خلال النظم القرآني، ويكشف عن دلالات الترتيب، واللفظ، والشيء الذي يبرز في سياق المعنى المطلق والمهيمن.' }
+      ];
+
+      const filterConfig = [
+        { label: 'الكل', value: 'الكل' },
+        { label: 'البلاغة', value: 'البلاغة' },
+        { label: 'القرآن الكريم', value: 'القرآن الكريم' },
+        { label: 'الحديث النبوي', value: 'الحديث النبوي' },
+        { label: 'اللغة والنقد', value: 'اللغة والنقد' },
+        { label: 'الكتب والمؤلفات', value: 'الكتب والمؤلفات' }
+      ];
+
+      const areas = [
+        { title: 'البلاغة العربية', description: 'مقاربة النص العربي في بنيته الدلالية واللفظية وأساليب البيان.', icon: '✒️' },
+        { title: 'النظم القرآني', description: 'دراسة ترابط المعنى، والنسق، والتأليف في النص القرآني.', icon: '📖' },
+        { title: 'الإعجاز البلاغي', description: 'تحليل الآيات والعبارات من جهة الفصاحة، والتأثير البلاغي.', icon: '✨' },
+        { title: 'البيان والاستعارة', description: 'رصد المحسنات البيانية والمعنى المجازي في النص العربي.', icon: '🪄' },
+        { title: 'البلاغة النبوية', description: 'قراءة في أسلوب النبي صلى الله عليه وسلم وأثره في البيان.', icon: '🕊️' },
+        { title: 'النقد', description: 'مقابلة النصوص العربية بمنهجية نقدية تحليلية.', icon: '🔎' },
+        { title: 'اللغة والتحرير', description: 'تحسين الأداء اللغوي، وضبط المعنى، وصياغة التعبير.', icon: '📝' },
+        { title: 'الشعر', description: 'قراءة أدبية في بنية القصيدة ومعانيها الفنية.', icon: '🎼' }
+      ];
+
+      const state = {
+        activeFilter: 'الكل',
+        query: '',
+        sort: 'alpha'
+      };
+
+      const statsGrid = document.getElementById('statsGrid');
+      const filterTabs = document.getElementById('filterTabs');
+      const researchGrid = document.getElementById('researchGrid');
+      const areasGrid = document.getElementById('areasGrid');
+      const searchInput = document.getElementById('searchInput');
+      const sortSelect = document.getElementById('sortSelect');
+      const resultCount = document.getElementById('resultCount');
+      const modal = document.getElementById('researchModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalCategory = document.getElementById('modalCategory');
+      const modalType = document.getElementById('modalType');
+      const modalBody = document.getElementById('modalBody');
+      const themeToggle = document.getElementById('themeToggle');
+
+      function normalizeText(value) {
+        return value.replace(/\s+/g, ' ').trim();
+      }
+
+      function getFilterGroup(work) {
+        const category = work.category;
+        if (category === 'الدراسات القرآنية') return 'القرآن الكريم';
+        if (category === 'البلاغة النبوية') return 'الحديث النبوي';
+        if (category === 'اللغة والتحرير' || category === 'بلاغة ونقد') return 'اللغة والنقد';
+        if (category === 'الشعر' || category === 'البيان والإعجاز') return 'البلاغة';
+        if (category === 'كتب ومؤلفات') return 'الكتب والمؤلفات';
+        return 'البلاغة';
+      }
+
+      function getDescriptionByTitle(title) {
+        const lowered = title.toLowerCase();
+        if (lowered.includes('قرآن') || lowered.includes('آيات') || lowered.includes('النظم')) return 'دراسة قرآنية في البنية الدلالية والنظم البلاغي';
+        if (lowered.includes('حديث') || lowered.includes('نبوي') || lowered.includes('الصدق') || lowered.includes('الولي')) return 'قراءة في البلاغة النبوية وبنيتها الدلالية';
+        if (lowered.includes('لغة') || lowered.includes('تحرير') || lowered.includes('النقد')) return 'مقاربة لغوية ونقدية في أسلوب التعبير وتحليل المعنى';
+        if (lowered.includes('شعر') || lowered.includes('قصيدة')) return 'قراءة شعرية في البنية الفنية والمعنى الجمالي';
+        if (lowered.includes('بيان') || lowered.includes('استعارة') || lowered.includes('إعجاز')) return 'بحث في البيان والإعجاز والآليات البلاغية';
+        return 'دراسة بلاغية نقدية في الأثر اللغوي والوظيفة الدلالية';
+      }
+
+      function renderStats() {
+        const counts = {
+          total: researchWorks.length,
+          rhetoric: researchWorks.filter((work) => getFilterGroup(work) === 'البلاغة').length,
+          quran: researchWorks.filter((work) => getFilterGroup(work) === 'القرآن الكريم').length,
+          hadith: researchWorks.filter((work) => getFilterGroup(work) === 'الحديث النبوي').length,
+          books: researchWorks.filter((work) => getFilterGroup(work) === 'الكتب والمؤلفات').length
+        };
+
+        const items = [
+          { label: 'عدد الأعمال البحثية', value: counts.total },
+          { label: 'الأبحاث البلاغية', value: counts.rhetoric },
+          { label: 'الدراسات القرآنية', value: counts.quran },
+          { label: 'الدراسات النبوية', value: counts.hadith },
+          { label: 'المؤلفات والكتب', value: counts.books }
+        ];
+
+        statsGrid.innerHTML = items.map((item) => `
+          <div class="stat-card">
+            <div class="stat-value">${item.value}</div>
+            <div class="stat-label">${item.label}</div>
+          </div>
+        `).join('');
+      }
+
+      function renderFilterTabs() {
+        filterTabs.innerHTML = filterConfig.map((item) => `
+          <button
+            type="button"
+            class="filter-button ${state.activeFilter === item.value ? 'active' : ''}"
+            data-filter="${item.value}"
+            aria-pressed="${state.activeFilter === item.value}"
+          >
+            ${item.label}
+          </button>
+        `).join('');
+
+        filterTabs.querySelectorAll('.filter-button').forEach((button) => {
+          button.addEventListener('click', () => {
+            state.activeFilter = button.dataset.filter;
+            renderFilterTabs();
+            renderWorks();
+          });
+        });
+      }
+
+      function sortWorks(list) {
+        const sorted = [...list];
+        if (state.sort === 'category') {
+          sorted.sort((a, b) => a.category.localeCompare(b.category) || a.title.localeCompare(b.title));
+        } else {
+          sorted.sort((a, b) => a.title.localeCompare(b.title));
+        }
+        return sorted;
+      }
+
+      function renderWorks() {
+        const filtered = researchWorks.filter((work) => {
+          const matchesFilter =
+            state.activeFilter === 'الكل' || getFilterGroup(work) === state.activeFilter;
+          const term = normalizeText(state.query);
+          const matchesSearch = !term || work.title.toLowerCase().includes(term.toLowerCase());
+          return matchesFilter && matchesSearch;
+        });
+
+        const works = sortWorks(filtered);
+        resultCount.textContent = `${works.length} نتيجة`;
+
+        if (!works.length) {
+          researchGrid.innerHTML = `
+            <div class="about-panel" style="grid-column: 1 / -1;">
+              <p>لا توجد نتائج تطابق كلمة البحث الحالية أو التصنيف المختار. جرّب كلمة أخرى أو اختر تصنيفًا مختلفًا.</p>
+            </div>
+          `;
+          return;
+        }
+
+        researchGrid.innerHTML = works.map((work, index) => `
+          <article class="research-card" tabindex="0" data-id="${work.id}" aria-label="عرض تفاصيل البحث ${work.title}">
+            <div class="card-top">
+              <span class="card-number">${index + 1}</span>
+              <span>${work.category}</span>
+            </div>
+            <div class="card-body">
+              <span class="tag">${getFilterGroup(work)}</span>
+              <h4>${work.title}</h4>
+              <p>${work.description || getDescriptionByTitle(work.title)}</p>
+              <button class="card-button" type="button" data-id="${work.id}">عرض التفاصيل</button>
+            </div>
+          </article>
+        `).join('');
+
+        researchGrid.querySelectorAll('.research-card').forEach((card) => {
+          const button = card.querySelector('.card-button');
+          const openCard = () => openModal(Number(card.dataset.id));
+          card.addEventListener('click', openCard);
+          button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            openCard();
+          });
+          card.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              openCard();
+            }
+          });
+        });
+      }
+
+      function renderAreas() {
+        areasGrid.innerHTML = areas.map((area) => `
+          <div class="area-card">
+            <div class="area-icon" aria-hidden="true">${area.icon}</div>
+            <h4>${area.title}</h4>
+            <p>${area.description}</p>
+          </div>
+        `).join('');
+      }
+
+      function openModal(id) {
+        const work = researchWorks.find((item) => item.id === id);
+        if (!work) return;
+
+        modalTitle.textContent = work.title;
+        modalCategory.textContent = work.category;
+        modalType.textContent = work.type || 'بحث';
+        modalBody.innerHTML = `
+          <p><strong>التصنيف:</strong> ${getFilterGroup(work)}</p>
+          <p><strong>الوصف:</strong> ${work.description || getDescriptionByTitle(work.title)}</p>
+          <p><strong>التفاصيل:</strong> ${work.details || 'لا توجد تفاصيل إضافية في هذه البيانات.'}</p>
+        `;
+
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      searchInput.addEventListener('input', (event) => {
+        state.query = event.target.value;
+        renderWorks();
+      });
+
+      sortSelect.addEventListener('change', (event) => {
+        state.sort = event.target.value;
+        renderWorks();
+      });
+
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+      });
+
+      document.querySelector('.modal-close').addEventListener('click', closeModal);
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('open')) {
+          closeModal();
+        }
+      });
+
+      document.querySelector('.to-top').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        themeToggle.textContent = isDark ? 'الوضع الفاتح' : 'الوضع الليلي';
+      });
+
+      renderStats();
+      renderFilterTabs();
+      renderWorks();
+      renderAreas();
+    </script>
+  </body>
+</html>
